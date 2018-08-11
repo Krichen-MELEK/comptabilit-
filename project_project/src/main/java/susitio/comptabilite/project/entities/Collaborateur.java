@@ -1,5 +1,16 @@
 package susitio.comptabilite.project.entities;
 
-public class Collaborateur {
+import javax.persistence.Entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+public class Collaborateur extends Personne{
+
+	
 }

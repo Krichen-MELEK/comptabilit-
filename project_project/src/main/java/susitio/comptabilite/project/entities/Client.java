@@ -4,11 +4,9 @@ import javax.persistence.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
-@NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Data
@@ -22,5 +20,10 @@ public class Client extends Personne {
     String secteurActivite ;
     String adresseSociete ;
     String emailSociete ;
+	public Client() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+    
 }
