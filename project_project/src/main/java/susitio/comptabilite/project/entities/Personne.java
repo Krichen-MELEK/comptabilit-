@@ -1,19 +1,16 @@
-package entities;
+package susitio.comptabilite.project.entities;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-
-@NoArgsConstructor
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Data
 @Entity
+@Getter
+@Setter @NoArgsConstructor
 public class Personne {
 	
 	@Id@GeneratedValue
@@ -25,4 +22,7 @@ public class Personne {
 	private String telephone ;
 	private String login;
 	private String motDePasse;
+
+
+
 }
