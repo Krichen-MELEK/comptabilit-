@@ -1,16 +1,15 @@
 package susitio.comptabilite.project.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 
-@RequiredArgsConstructor
+
+
 @AllArgsConstructor
 @Data
 @MappedSuperclass
@@ -25,7 +24,12 @@ public class Personne {
 	private String telephone ;
 	private String login;
 	private String motDePasse;
-	
+	@OneToMany(mappedBy = "personneEmetteur")
+	private List<Message> messagesEmetteur ;
+	@OneToMany(mappedBy = "personneRecepteur")
+	private List<Message> messagesRecepteur ;
+	@OneToMany(mappedBy = "personne")
+	private List<Notification> notifications ;
 	public Personne() {
 		super();
 		// TODO Auto-generated constructor stub
