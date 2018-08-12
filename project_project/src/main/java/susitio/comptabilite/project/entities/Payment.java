@@ -25,6 +25,44 @@ public class Payment {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public Date getDateDeCreation() {
+		return dateDeCreation;
+	}
+
+	public void setDateDeCreation(Date dateDeCreation) {
+		this.dateDeCreation = dateDeCreation;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 }

@@ -6,10 +6,12 @@ import lombok.RequiredArgsConstructor;
 import susitio.comptabilite.project.enums.TypeFolder;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
-@AllArgsConstructor
-@Data
 @Entity
 public class Message {
 
@@ -27,15 +29,74 @@ public class Message {
     private Personne personneRecepteur ;
 
     public Message() {
+        Date date = Calendar.getInstance().getTime();
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String today = formatter.format(date);
+        this.lu = false ;
+        this.dateEnvoie = today ;
     }
 
-    public Message(String object, String contenue, String destination, Boolean lu, String dateEnvoie, Personne personneEmetteur, Personne personneRecepteur) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getObject() {
+        return object;
+    }
+
+    public void setObject(String object) {
         this.object = object;
+    }
+
+    public String getContenue() {
+        return contenue;
+    }
+
+    public void setContenue(String contenue) {
         this.contenue = contenue;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public Boolean getLu() {
+        return lu;
+    }
+
+    public void setLu(Boolean lu) {
         this.lu = lu;
+    }
+
+    public String getDateEnvoie() {
+        return dateEnvoie;
+    }
+
+    public void setDateEnvoie(String dateEnvoie) {
         this.dateEnvoie = dateEnvoie;
+    }
+
+    public Personne getPersonneEmetteur() {
+        return personneEmetteur;
+    }
+
+    public void setPersonneEmetteur(Personne personneEmetteur) {
         this.personneEmetteur = personneEmetteur;
+    }
+
+    public Personne getPersonneRecepteur() {
+        return personneRecepteur;
+    }
+
+    public void setPersonneRecepteur(Personne personneRecepteur) {
         this.personneRecepteur = personneRecepteur;
     }
 }

@@ -8,6 +8,11 @@ import javax.persistence.ManyToOne;
 
 import susitio.comptabilite.project.enums.TypeNotification;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 @Entity
 public class Notification {
@@ -19,18 +24,24 @@ public class Notification {
     private String contenue ;
     private Integer idobject ;
     private Boolean vu ;
+    private String dateCreation ;
     @ManyToOne
     private Personne personne;
 
     public Notification() {
+		Date date = Calendar.getInstance().getTime();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String today = formatter.format(date);
+    	this.vu = false ;
+    	this.dateCreation = today ;
     }
 
-	public Notification(TypeNotification typeNotification, String contenue, Integer idobject, Boolean vu) {
+	public Notification(TypeNotification typeNotification, String contenue, Integer idobject) {
 		super();
 		this.typeNotification = typeNotification;
 		this.contenue = contenue;
 		this.idobject = idobject;
-		this.vu = vu;
+		this.vu = false;
 	}
 
 	public int getId() {

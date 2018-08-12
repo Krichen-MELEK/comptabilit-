@@ -2,8 +2,10 @@ package susitio.comptabilite.project.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import susitio.comptabilite.project.entities.Client;
 
+@Repository
 public interface ClientService {
 
 	public List<Client> getClients();
