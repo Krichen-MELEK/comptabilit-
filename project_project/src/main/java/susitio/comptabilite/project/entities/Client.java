@@ -1,19 +1,19 @@
 package susitio.comptabilite.project.entities;
 
+import java.util.List;
+
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
-import java.util.List;
 
 
 @AllArgsConstructor
 @Data
 @Entity
+@DiscriminatorValue(value="Client") 
 public class Client extends Personne {
 
     private String nomSociete ;
