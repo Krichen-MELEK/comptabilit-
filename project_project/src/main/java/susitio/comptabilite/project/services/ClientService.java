@@ -13,6 +13,8 @@ public interface ClientService {
 	public void addClient(Client client);
 	
 	public void deleteClient(int id);
+
+	public void approuverClient(int id);
 	
 	
 }

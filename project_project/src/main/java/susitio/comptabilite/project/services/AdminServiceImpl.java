@@ -1,8 +1,10 @@
 package susitio.comptabilite.project.services;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import susitio.comptabilite.project.dao.AdminRepository;
 import susitio.comptabilite.project.entities.Admin;
+import susitio.comptabilite.project.entities.Client;
 
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class AdminServiceImpl implements AdminService
 {
     @Autowired
     private AdminRepository adminRepository;
+
     @Override
     public List<Admin> getAdmins() {
         return adminRepository.findAll();
@@ -29,4 +32,5 @@ public class AdminServiceImpl implements AdminService
     public void deleteAdmin(int id) {
         adminRepository.deleteById(id);
     }
+
 }

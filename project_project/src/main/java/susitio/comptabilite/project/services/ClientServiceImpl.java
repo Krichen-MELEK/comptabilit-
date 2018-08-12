@@ -26,7 +26,6 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public void addClient(Client client) {
-			
 		clientRepository.save(client);
 	}
 
@@ -35,5 +34,13 @@ public class ClientServiceImpl implements ClientService {
 		
 		clientRepository.deleteById(id);
 	}
+
+	@Override
+	public void approuverClient(int id) {
+		Client client = clientRepository.findById(id).get();
+		client.setValidation(true);
+		clientRepository.save(client);
+	}
+
 
 }
