@@ -1,20 +1,21 @@
 package susitio.comptabilite.project.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import susitio.comptabilite.project.enums.TypeFolder;
 
-import javax.persistence.*;
 
-@AllArgsConstructor
-@Data
 @Entity
 public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
+    private String name;
     private String path ;
     private String dateCreation  ;
     private TypeFolder type ;
@@ -23,14 +24,64 @@ public class Document {
     @ManyToOne
     private Client client ;
 
-    public Document(String path, String dateCreation, TypeFolder type, DossierAnnuel dossierAnnuel, Client client) {
-        this.path = path;
-        this.dateCreation = dateCreation;
-        this.type = type;
-        this.dossierAnnuel = dossierAnnuel;
-        this.client = client;
-    }
-
     public Document() {
     }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(String dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
+	public TypeFolder getType() {
+		return type;
+	}
+
+	public void setType(TypeFolder type) {
+		this.type = type;
+	}
+
+	public DossierAnnuel getDossierAnnuel() {
+		return dossierAnnuel;
+	}
+
+	public void setDossierAnnuel(DossierAnnuel dossierAnnuel) {
+		this.dossierAnnuel = dossierAnnuel;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+    
+    
 }
