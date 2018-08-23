@@ -1,11 +1,13 @@
 package susitio.comptabilite.project.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import susitio.comptabilite.project.dao.DossierAnnuelRepository;
-import susitio.comptabilite.project.entities.DossierAnnuel;
 
-import java.util.List;
+import susitio.comptabilite.project.dao.DossierAnnuelRepository;
+import susitio.comptabilite.project.entities.Client;
+import susitio.comptabilite.project.entities.DossierAnnuel;
 
 @Service
 public class DossierAnnuelServiceImpl implements DossierAnnuelService {
@@ -14,8 +16,8 @@ public class DossierAnnuelServiceImpl implements DossierAnnuelService {
     DossierAnnuelRepository dossierAnnuelRepository ;
 
     @Override
-    public List<DossierAnnuel> getDossierAnnuelByClient() {
-        return dossierAnnuelRepository.findByClient();
+    public List<DossierAnnuel> getDossierAnnuelByClient(Client client) {
+        return dossierAnnuelRepository.findByClient(client);
     }
 
     @Override
