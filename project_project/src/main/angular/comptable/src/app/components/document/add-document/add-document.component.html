@@ -1,0 +1,7 @@
+<h2>Add document form</h2>
+<form [formGroup]="addDocumentForm" (ngSubmit)="onSubmit(addDocumentForm)" enctype="multipart/form-data" >
+  <div class="form-group">
+    <input type="file" formControlName="file" multiple="multiple" />
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit" />
+</form>
