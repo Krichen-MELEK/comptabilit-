@@ -13,6 +13,9 @@ import { DocumentService } from './services/document.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListClientComponent } from './components/client/list-client/list-client.component';
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
+import { TemplateAdminComponent } from './components/admin/template-admin/template-admin.component';
+import { AdminLeftSidebarComponent } from './components/admin/admin-left-sidebar/admin-left-sidebar.component';
+import { AdminPageContentComponent } from './components/admin/admin-page-content/admin-page-content.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.com
     AddDocumentComponent,
     NavbarComponent,
     ListClientComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    TemplateAdminComponent,
+    AdminLeftSidebarComponent,
+    AdminPageContentComponent
   ],
   imports: [
     BrowserModule,
