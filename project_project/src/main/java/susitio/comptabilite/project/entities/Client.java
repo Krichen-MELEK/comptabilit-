@@ -1,11 +1,7 @@
 package susitio.comptabilite.project.entities;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -32,8 +28,38 @@ public class Client extends Personne {
 		super();
 		this.validation=false;
 	}
+	
 
-    public String getNomSociete() {
+    public Client(String nomSociete, String matricule, String telSociete, String numRegistreCommerce,
+			String secteurActivite, String adresseSociete, String emailSociete) {
+		super();
+		this.nomSociete = nomSociete;
+		this.matricule = matricule;
+		this.telSociete = telSociete;
+		this.numRegistreCommerce = numRegistreCommerce;
+		this.secteurActivite = secteurActivite;
+		this.adresseSociete = adresseSociete;
+		this.emailSociete = emailSociete;
+	}
+    
+
+
+	public Client(String nom, String prenom, String email, String telephone, String motDePasse, String nomSociete,
+			String matricule, String telSociete, String numRegistreCommerce, String secteurActivite,
+			String adresseSociete, String emailSociete) {
+		super(nom, prenom, email, telephone, motDePasse);
+		this.nomSociete = nomSociete;
+		this.matricule = matricule;
+		this.telSociete = telSociete;
+		this.numRegistreCommerce = numRegistreCommerce;
+		this.secteurActivite = secteurActivite;
+		this.adresseSociete = adresseSociete;
+		this.emailSociete = emailSociete;
+
+	}
+
+
+	public String getNomSociete() {
         return nomSociete;
     }
 

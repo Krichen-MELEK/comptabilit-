@@ -1,9 +1,8 @@
 package susitio.comptabilite.project.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,15 +36,17 @@ public class Personne {
 	}
 
 	public Personne(String nom, String prenom, String email, String telephone,
-			String motDePasse, List<Message> messagesEmetteur, List<Message> messagesRecepteur,
-			List<Notification> notifications) {
+			String motDePasse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-
 		this.email = email;
 		this.telephone = telephone;
 		this.motDePasse = motDePasse;
+		this.messagesEmetteur = new ArrayList<Message>();
+		this.messagesRecepteur = new ArrayList<Message>();
+		this.notifications = new ArrayList<Notification>();
+		
 
 	}
 
