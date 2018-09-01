@@ -5,4 +5,5 @@ export class Client {
         public telephone: String, public motDePasse: String, public nomSociete: String,
         public matricule: String, public telSociete: String, public numRegistreCommerce: String, public secteurActivite: String,
         public adresseSociete: String, public emailSociete: String, public validation: boolean){}
+        
 }
