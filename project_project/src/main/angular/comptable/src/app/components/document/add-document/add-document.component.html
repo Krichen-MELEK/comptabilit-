@@ -1,7 +1,108 @@
-<h2>Add document form</h2>
+<!-- <h2>Add document form</h2>
 <form [formGroup]="addDocumentForm" (ngSubmit)="onSubmit(addDocumentForm)" enctype="multipart/form-data" >
   <div class="form-group">
     <input type="file" formControlName="file" multiple="multiple" />
   </div>
   <input type="submit" class="btn btn-primary" value="Submit" />
-</form>
+</form> -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-outline-info">
+       
+        <div class="card-body">
+            <form action="#" class="form-horizontal">
+                <div class="form-body">
+                    <h3 class="box-title">Document</h3>
+                    <hr class="m-t-0 m-b-40">
+                    <!--/row-->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Année</label>
+                            <div class="col-md-9">
+                                <select class="form-control custom-select">
+                                    <option></option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>  
+                        <!--/span-->
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                              <label class="control-label text-right col-md-3">Emplacement</label>
+                              <div class="col-md-9">
+                                  <select class="form-control custom-select">
+                                      <option></option>
+                                      <option>Dossier Juridique</option>
+                                      <option>Bilan Annuelle</option>
+                                      <optgroup label="Bilan Mensuel">
+                                          <option>Janvier</option>
+                                          <option>Février</option>
+                                          <option>Mars</option>
+                                          <option>Avril</option>
+                                          <option>Mai</option>
+                                          <option>Juin</option>
+                                          <option>Juillet</option>
+                                          <option>août</option>
+                                          <option>septembrer</option>
+                                          <option>Octobre</option>
+                                          <option>Novembre</option> 
+                                      </optgroup>
+                                                  
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                
+                 
+                    <div class="row">
+                      <div class="col-md-1"></div>
+                      <div class=" col-md-10">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                              <input onchange="uploadFile()" id="file1"  type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class=" col-md-10">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%;">
+                                    40%
+                                    </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
+                </div>
+                <hr>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-9">
+                            
+                        </div>
+                        <div class="col-md-3">                        
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

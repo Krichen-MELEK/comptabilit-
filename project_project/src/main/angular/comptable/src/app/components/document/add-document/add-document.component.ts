@@ -1,6 +1,6 @@
-import { DocumentService } from './../../../services/document.service';
+import { DocumentService } from '../../../services/document.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '../../../../../node_modules/@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-document',

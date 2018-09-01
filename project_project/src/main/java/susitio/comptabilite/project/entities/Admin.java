@@ -2,6 +2,7 @@ package susitio.comptabilite.project.entities;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 @Entity
-@DiscriminatorValue(value="Admin") 
+@PrimaryKeyJoinColumn(name="ID")
 public class Admin extends Personne {
 
 }

@@ -13,19 +13,16 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 
-@Entity  
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)  
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)   
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Personne {
 	
 	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String prenom;
-	private String adresse;
 	private String email;
 	private String telephone ;
-	private String login;
 	private String motDePasse;
 	@OneToMany(mappedBy = "personneEmetteur")
 	private List<Message> messagesEmetteur ;
@@ -39,16 +36,15 @@ public class Personne {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Personne(String nom, String prenom, String adresse, String email, String telephone, String login,
+	public Personne(String nom, String prenom, String email, String telephone,
 			String motDePasse, List<Message> messagesEmetteur, List<Message> messagesRecepteur,
 			List<Notification> notifications) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adresse = adresse;
+
 		this.email = email;
 		this.telephone = telephone;
-		this.login = login;
 		this.motDePasse = motDePasse;
 
 	}
@@ -77,13 +73,6 @@ public class Personne {
 		this.prenom = prenom;
 	}
 
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
 
 	public String getEmail() {
 		return email;
@@ -101,13 +90,7 @@ public class Personne {
 		this.telephone = telephone;
 	}
 
-	public String getLogin() {
-		return login;
-	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
 
 	public String getMotDePasse() {
 		return motDePasse;

@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+.btn-grean{
+    background-color:#5cb85c !important ; 
+    border-color: #28a745 !important  ; 
+}
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #fafafa;
+    border: solid 1px #11caff;
+    color: #11caff;
+    text-align: center;
+    font-size: 20px;
+    padding: 30px;
+    width: 250px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 50px ;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

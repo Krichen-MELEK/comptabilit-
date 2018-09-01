@@ -1,6 +1,6 @@
-import { Client } from './../models/client.model';
+import { Client } from '../models/client.model';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

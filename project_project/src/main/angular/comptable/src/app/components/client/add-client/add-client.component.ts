@@ -1,7 +1,7 @@
-import { ClientService } from './../../../services/client.service';
+import { ClientService } from '../../../services/client.service';
 
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '../../../../../node_modules/@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({

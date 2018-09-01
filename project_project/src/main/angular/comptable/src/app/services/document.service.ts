@@ -1,6 +1,6 @@
-import { Document } from './../models/document.model';
+import { Document } from '../models/document.model';
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '../../../node_modules/@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 
 
