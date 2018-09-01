@@ -7,7 +7,7 @@
                               <h4 class="m-b-0 text-white">Inscription</h4>
                           </div>
                           <div class="card-body">
-                              <form action="#" class="form-horizontal">
+                              <form [formGroup]="clientForm" (ngSubmit)="onSubmit(clientForm)" class="form-horizontal">
                                   <div class="form-body">
                                       <h3 class="box-title m-t-15">Entreprise Info</h3>
                                       <hr class="m-t-0 m-b-40">
@@ -16,7 +16,7 @@
                                               <div class="form-group row">
                                                   <label class="control-label text-right col-md-3">Nom</label>
                                                   <div class="col-md-9">
-                                                      <input type="text" class="form-control" >
+                                                      <input type="text" class="form-control" formControlName="nomSociete" >
                                                       <small class="form-control-feedback"> Entrez le nom de l'entreprise </small> </div>
                                               </div>
                                           </div>
@@ -25,7 +25,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-4">Matricule Fiscale</label>
                                                   <div class="col-md-8">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="matricule">
                                                       <small class="form-control-feedback"> </small> </div>
                                               </div>
                                           </div>
@@ -37,7 +37,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-3">Téléphone</label>
                                                   <div class="col-md-9">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger"  formControlName="telSociete">
                                                       <small class="form-control-feedback"> </small> </div>
                                               </div>
                                           </div>
@@ -46,7 +46,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-4">Numéro registre du commerce</label>
                                                   <div class="col-md-8">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="numRegistreCommerce">
                                                       <small class="form-control-feedback"> </small> </div>
                                               </div>
                                           </div>
@@ -58,7 +58,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-3">Email</label>
                                                   <div class="col-md-9">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="emailSociete">
                                                       <small class="form-control-feedback"> </small>Entrez l'email de l'entreprise</div>
                                               </div>
                                           </div>
@@ -67,7 +67,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-4">Secteur d'activité</label>
                                                   <div class="col-md-8">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="secteurActivite">
                                                       <small class="form-control-feedback"> </small></div>
                                               </div>
                                           </div>
@@ -78,7 +78,7 @@
                                             <div class="form-group has-danger row">
                                                 <label class="control-label text-right col-md-3">Adresse</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control form-control-danger" >
+                                                    <input type="text" class="form-control form-control-danger" formControlName="adresseSociete">
                                                     <small class="form-control-feedback"> </small>Entrez l'adresse de l'entreprise</div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-3">Nom</label>
                                                   <div class="col-md-9">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="nom">
                                                       <small class="form-control-feedback"> </small>Entrez le nom du Résponsable</div>
                                               </div>
                                           </div>
@@ -100,7 +100,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-4">Prénom</label>
                                                   <div class="col-md-8">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="prenom">
                                                       <small class="form-control-feedback"> </small>Entrez le prénom du responsable</div>
                                               </div>
                                           </div>
@@ -110,7 +110,7 @@
                                                     <div class="form-group has-danger row">
                                                         <label class="control-label text-right col-md-3">Télephone</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control form-control-danger" >
+                                                            <input type="text" class="form-control form-control-danger" formControlName="telephone">
                                                             <small class="form-control-feedback"> </small>Entrez le numero du téléphone du responsable</div>
                                                     </div>
                                                 </div>
@@ -118,7 +118,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-4">Email</label>
                                                   <div class="col-md-8">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="email">
                                                       <small class="form-control-feedback"> </small>Entrez l'email du Résponsable</div>
                                               </div>
                                           </div>
@@ -134,7 +134,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-3">Mot de passe </label>
                                                   <div class="col-md-9">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger" formControlName="motDePasse" >
                                                       <small class="form-control-feedback"> </small>Votre mot de passe doit comporter un minimum de 8 caractères,
                                                        se composer de chiffres et de lettres et comprendre des majuscules/minuscules</div>
                                               </div>
@@ -143,7 +143,7 @@
                                               <div class="form-group has-danger row">
                                                   <label class="control-label text-right col-md-4">Ecrire de nouveau</label>
                                                   <div class="col-md-8">
-                                                      <input type="text" class="form-control form-control-danger" >
+                                                      <input type="text" class="form-control form-control-danger">
                                                       <small class="form-control-feedback"> </small>message alert !</div>
                                               </div>
                                           </div>

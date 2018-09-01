@@ -1,3 +1,5 @@
+import { ClientService } from './../../../services/client.service';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscriptionComponent implements OnInit {
 
-  constructor() { }
+  clientForm: FormGroup;
+
+  constructor(public clientService: ClientService) { 
+    
+    this.clientForm = new FormGroup({
+    nom: new FormControl(),
+    prenom: new FormControl(),
+    email: new FormControl(),
+    motDePasse: new FormControl(),
+    telephone:new FormControl(),
+    nomSociete: new FormControl(),
+    adresseSociete: new FormControl(),
+    telSociete: new FormControl(),
+    matricule: new FormControl(),
+    numRegistreCommerce: new FormControl(),
+    emailSociete: new FormControl(),
+    secteurActivite: new FormControl(),
+  }) }
 
   ngOnInit() {
   }
 
+  onSubmit({value,valid}){
+    console.log(value);
+    this.clientService.addClient(value).subscribe(data =>{
+      console.log("goo");
+    },error=> console.error(error));
+  }
 }
