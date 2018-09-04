@@ -1,5 +1,4 @@
 import { ClientComponent } from './components/client/client.component';
-import { AddClientComponent } from './components/client/add-client/add-client.component';
 import { ClientService } from './services/client.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -32,12 +31,15 @@ import { BilanMoisComponent } from './components/document/list-document/sous-lis
 import { SousListDocumentComponent } from './components/document/list-document/sous-list-document/sous-list-document.component';
 import { AddDocumentAdminComponent } from './components/document/add-document-admin/add-document-admin.component';
 import { InscriptionComponent } from './components/client/inscription/inscription.component';
+import { AddCollaborateurComponent } from './components/collaborateur/add-collaborateur/add-collaborateur.component';
+import { CollaborateurService } from './services/collaborateur.service';
+import { ListClientNonValideComponent } from './components/client/list-client-non-valide/list-client-non-valide.component';
+import { EmailComposeClientComponent } from './components/email/email-compose-client/email-compose-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientComponent,
-    AddClientComponent,
     DocumentComponent,
     AddDocumentComponent,
     NavbarComponent,
@@ -61,7 +63,10 @@ import { InscriptionComponent } from './components/client/inscription/inscriptio
     BilanMoisComponent,
     SousListDocumentComponent,
     AddDocumentAdminComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    AddCollaborateurComponent,
+    ListClientNonValideComponent,
+    EmailComposeClientComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ import { InscriptionComponent } from './components/client/inscription/inscriptio
   ],
   providers: [
     ClientService,
-    DocumentService
+    DocumentService,
+    CollaborateurService
   ],
   bootstrap: [AppComponent]
 })

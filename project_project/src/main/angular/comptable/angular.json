@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/sweetalert2/dist/sweetalert2.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/lib/sweetalert/sweetalert.min.js",
+              "src/assets/js/lib/sweetalert/sweetalert.init.js"
+            ]
           },
           "configurations": {
             "production": {

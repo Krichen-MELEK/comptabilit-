@@ -17,11 +17,20 @@ export class ClientService {
     return this.http.post<Client>('/client/add', client);
   }
 
-  getClient(id: string) {
-    return this.http.get<Client>('/client/' + id);
+  getClient(id: number) {
+    return this.http.get<Client>('/admin/client/' + id);
   }
 
+  getClientValidation(valide: Boolean){
+    return this.http.get('/admin/client/validation/' + valide) ; 
+  }
   getAllClients(){
     return this.http.get("/client/getAll");
+  }
+  deleteClient(id:number){
+    return this.http.delete("/admin/client/delete/"+id) ; 
+  }
+  approuverClient(id:number){
+    return this.http.get("/admin/client/approuver/"+id)
   }
 }

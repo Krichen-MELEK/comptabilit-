@@ -42,5 +42,10 @@ public class ClientServiceImpl implements ClientService {
 		clientRepository.save(client);
 	}
 
+	@Override
+	public List<Client> getNonValidationClients(Boolean valide) {
+		return  clientRepository.findClientByValidation(valide) ;
+	}
+
 
 }

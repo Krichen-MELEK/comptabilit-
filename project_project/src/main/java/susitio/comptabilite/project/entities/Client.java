@@ -1,5 +1,7 @@
 package susitio.comptabilite.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,10 +21,13 @@ public class Client extends Personne {
     private String emailSociete ;
     private boolean validation;
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Document> documents ;
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<DossierAnnuel> dossierAnnuels ;
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Payment> payments ;
 	public Client() {
 		super();

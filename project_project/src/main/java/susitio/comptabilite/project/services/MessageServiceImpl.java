@@ -6,8 +6,10 @@ import susitio.comptabilite.project.dao.MessageRepository;
 import susitio.comptabilite.project.entities.Client;
 import susitio.comptabilite.project.entities.Message;
 import susitio.comptabilite.project.entities.Notification;
+import susitio.comptabilite.project.entities.Personne;
 import susitio.comptabilite.project.enums.TypeNotification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,14 +26,18 @@ public class MessageServiceImpl implements MessageService {
     @Autowired
     ClientService clientService ;
 
+    @Autowired
+    PersonneService personneService ;
+
     @Override
-    public List<Message> getMessagesEmmeteur(int id) {
-        return messageRepository.findByPersonneEmetteur(id);
+    public List<Message> getMessagesEmmeteur(Personne personne) {
+
+        return messageRepository.findByPersonneEmetteur(personne);
     }
 
     @Override
-    public List<Message> getMessagesRecepteur(int id) {
-        return messageRepository.findByPersonneRecepteur(id);
+    public ArrayList<Message> getMessagesRecepteur(Personne personne) {
+        return (ArrayList<Message>) messageRepository.findAll();
     }
 
     @Override

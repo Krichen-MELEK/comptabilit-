@@ -1,5 +1,6 @@
 package susitio.comptabilite.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +21,23 @@ public class Message {
     private int id ;
     private String object ;
     private String contenue ;
-    private String destination ;
     private Boolean lu ;
     private String dateEnvoie ;
     @ManyToOne
     private Personne personneEmetteur ;
     @ManyToOne
     private Personne personneRecepteur ;
+
+    public Message(String object, String contenue) {
+        this.object = object;
+        this.contenue = contenue;
+        Date date = Calendar.getInstance().getTime();
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String today = formatter.format(date);
+        this.lu = false ;
+        this.dateEnvoie = today ;
+
+    }
 
     public Message() {
         Date date = Calendar.getInstance().getTime();
@@ -58,14 +69,6 @@ public class Message {
 
     public void setContenue(String contenue) {
         this.contenue = contenue;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public Boolean getLu() {

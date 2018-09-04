@@ -1,5 +1,7 @@
 package susitio.comptabilite.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +26,13 @@ public class Personne {
 	private String telephone ;
 	private String motDePasse;
 	@OneToMany(mappedBy = "personneEmetteur")
+	@JsonIgnore
 	private List<Message> messagesEmetteur ;
 	@OneToMany(mappedBy = "personneRecepteur")
+	@JsonIgnore
 	private List<Message> messagesRecepteur ;
 	@OneToMany(mappedBy = "personne")
+	@JsonIgnore
 	private List<Notification> notifications ;
 	
 	public Personne() {

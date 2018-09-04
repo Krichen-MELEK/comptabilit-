@@ -3,12 +3,10 @@ package susitio.comptabilite.project.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import susitio.comptabilite.project.entities.Client;
-import susitio.comptabilite.project.entities.Collaborateur;
-import susitio.comptabilite.project.entities.Message;
-import susitio.comptabilite.project.entities.Notification;
+import susitio.comptabilite.project.entities.*;
 import susitio.comptabilite.project.services.*;
 
+import javax.annotation.security.PermitAll;
 import java.util.List;
 
 @RestController
@@ -30,9 +28,17 @@ public class AdminController {
     @Autowired
     private NotificationService notificationService ;
 
+    @Autowired
+    private PersonneService personneService ;
+
     @GetMapping({"/client/view/all"})
     public List<Client> getAllClient(){
         return clientService.getClients() ;
+    }
+
+    @GetMapping({"/client/validation/{valide}"})
+    public List<Client> getClientByValidation(@PathVariable final Boolean valide){
+        return clientService.getNonValidationClients(valide) ;
     }
 
     @GetMapping({"/client/view/{id}"})
@@ -75,23 +81,25 @@ public class AdminController {
         collaborateurService.addCollaborateur(collaborateur);
     }
 
-   /* @GetMapping({"/message/reception/view/all/{idAdmin}"})
+    @GetMapping({"/message/reception/view/all/{idAdmin}"})
     public List<Message> getAllMessagesReception(@PathVariable final int idAdmin){
-        return adminService.getMessageRecepteur(idAdmin) ;
+        return messageService.getMessagesRecepteur(personneService.getPersonneById(idAdmin));
     }
 
-    @GetMapping({"/message/Envoie/view/all/{idAdmin}"})
+    @GetMapping({"/message/Emetteur/view/all/{idAdmin}"})
     public List<Message> getAllMessagesEnvoie(@PathVariable final int idAdmin){
-        return adminService.getMessageEnvoie(idAdmin) ;
-    } */
+        return messageService.getMessagesEmmeteur(personneService.getPersonneById(idAdmin)) ;
+    }
 
     @GetMapping({"message/view/{id}"})
     public Message getMessage(@PathVariable final int id){
         return messageService.getMessageById(id) ;
     }
 
-    @PostMapping({"/message/create"})
-    public void createMessage(@RequestBody Message message){
+    @PostMapping({"/message/create/{emmeteur}/{recepteur}"})
+    public void createMessage(@RequestBody Message message, @PathVariable final int emmeteur, @PathVariable final  int recepteur){
+        message.setPersonneEmetteur(clientService.getClientById(emmeteur));
+        message.setPersonneRecepteur(clientService.getClientById(recepteur));
         messageService.addMessage(message);
     }
 
@@ -114,4 +122,10 @@ public class AdminController {
     public List<Notification> getNotifications(@PathVariable final int idadmin){
         return notificationService.getNotificationByPersonne(idadmin) ;
     }*/
+
+    @GetMapping({"/client/{id}"})
+    public Client getPersonne(@PathVariable final int id){
+        System.out.println(id);
+        return clientService.getClientById(id) ;
+    }
 }

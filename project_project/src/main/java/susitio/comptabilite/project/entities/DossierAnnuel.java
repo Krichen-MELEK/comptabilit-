@@ -1,5 +1,6 @@
 package susitio.comptabilite.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class DossierAnnuel {
     private String nom ;
     private String annee ;
     @OneToMany(mappedBy="dossierAnnuel")
+    @JsonIgnore
     private List<Document> documents ;
     @ManyToOne
     private Client client ;

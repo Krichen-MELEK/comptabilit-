@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../../../services/message.service';
+import { Message } from '../../../models/message.model';
 
 @Component({
   selector: 'app-email-inbox',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailInboxComponent implements OnInit {
 
-  constructor() { }
+  messages: any[] ; 
+  constructor(public messageService: MessageService) { }
 
   ngOnInit() {
+    this.messageService.getMessageByClient(2).subscribe((result: any[]) => {
+      this.messages = result;
+      console.log(this.messages) ; 
+    }, error => console.error(error));
   }
 
 }

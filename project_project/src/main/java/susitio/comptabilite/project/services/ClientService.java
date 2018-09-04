@@ -17,6 +17,7 @@ public interface ClientService {
 	public void deleteClient(int id);
 
 	public void approuverClient(int id);
-	
+
+	public List<Client> getNonValidationClients(Boolean valide) ;
 	
 }
