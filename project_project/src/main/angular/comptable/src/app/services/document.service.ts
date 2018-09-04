@@ -1,7 +1,7 @@
-import { Document } from '../models/document.model';
+import { Document } from './../models/document.model';
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-
+import { HttpHeaders, HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
+import { Observable } from '../../../node_modules/rxjs';
 
 
 const httpOptions = {
@@ -10,13 +10,24 @@ const httpOptions = {
 
 @Injectable()
 export class DocumentService {
-
+  
   constructor(private http: HttpClient) { }
 
-  addDocument(document) {
-    return this.http.post<Document>('/document/add', document);
-  }
+  addDocument(file: File, value: any): Observable<HttpEvent<{}>> {
 
+    const formdata: FormData = new FormData();
+    /* console.log(file); */
+    formdata.append('file', file);
+    formdata.append('type', value['type']);
+    formdata.append('annee',value['annee']);
+    const req = new HttpRequest('POST', 'client/upload', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    }
+    );
+    console.log(formdata);
+    return this.http.request(req);
+  }
   getDocument(id: string) {
     return this.http.get<Document>('/document/' + id);
   }

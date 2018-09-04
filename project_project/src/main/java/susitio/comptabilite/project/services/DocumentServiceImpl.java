@@ -1,18 +1,23 @@
 package susitio.comptabilite.project.services;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import susitio.comptabilite.project.dao.DocumentRepository;
 import susitio.comptabilite.project.entities.Document;
+import susitio.comptabilite.project.enums.TypeFolder;
 
+@Service
 public class DocumentServiceImpl implements DocumentService{
+	
+	private final Path rootLocation = Paths.get("ProfilePictureStore");
+	
 	@Autowired
 	DocumentRepository documentRepository;
     @Override
@@ -26,28 +31,29 @@ public class DocumentServiceImpl implements DocumentService{
     }
 
     @Override
-    public void addDocument(Document document) {
-    	documentRepository.save(document);
-    }
-
-    @Override
     public void deleteDocument(int id) {
     	documentRepository.deleteById(id);
     }
 
 	@Override
-	public void uploadDocuments(MultipartFile[] files) {
+	public void uploadDocuments(MultipartFile file , TypeFolder type , String annee) {
+		Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,type);
+		documentRepository.save(document);
+		String message = "";
 		try {
-			for (MultipartFile file : files) {
-				byte[] bytes = file.getBytes();
-				Path path = Paths.get(file.getOriginalFilename());
-				Files.write(path, bytes);
-			}
 
+			  try {
+			   System.out.println(file.getOriginalFilename());
+			   System.out.println(rootLocation.toUri());
+			   Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+			  } catch (Exception e) {
+			   throw new RuntimeException("FAIL!");
+			  }
+			 
+	    	   message = "You successfully uploaded " + file.getOriginalFilename() + "!";
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+	    	  } catch (Exception e) {
+	    	   message = "Fail to upload Profile Picture" + file.getOriginalFilename() + "!";
+	    	  }
 	}
 }

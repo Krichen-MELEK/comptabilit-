@@ -18,6 +18,13 @@ export class Document {
 
     public id : number;
     public path : String;
-    public dateDeCreation : String;
-    public type : TypeFolder;
+    public anneeDeCreation : String;
+	public type : TypeFolder;
+	public name : string;
+	constructor (path?:string , anneeDeCreation?:string , type?:TypeFolder)
+	{
+		this.anneeDeCreation=anneeDeCreation;
+		this.path=path;
+		this.type=type;
+	}
 }

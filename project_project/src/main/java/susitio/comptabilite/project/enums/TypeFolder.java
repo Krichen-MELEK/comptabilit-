@@ -4,16 +4,16 @@ public enum TypeFolder {
 	
 	dossierJuridique,
 	dossierAnnuel,
-	janvier,
-	fevrier,
-	mars,	
-	avril,	
-	mai,	
-	juin,	
-	juillet,	
-	aout,
-	septembre,	
-	octobre,	
-	novembre,	
-	decembre
+	Janvier,
+	Février,
+	Mars,	
+	Avril,	
+	Mai,	
+	Juin,	
+	Juillet,	
+	Août,
+	Septembrer,	
+	Octobre,	
+	Novembre,	
+	Décembre
 }

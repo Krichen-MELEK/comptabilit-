@@ -17,14 +17,24 @@ public class Document {
     private Integer id ;
     private String name;
     private String path ;
-    private String dateCreation  ;
+    private String anneeDeCreation  ;
     private TypeFolder type ;
     @ManyToOne
     private DossierAnnuel dossierAnnuel ;
     @ManyToOne
     private Client client ;
+    
+    
+    
+    public Document(String name, String path, String anneeDeCreation, TypeFolder type) {
+		super();
+		this.name = name;
+		this.path = path;
+		this.anneeDeCreation = anneeDeCreation;
+		this.type = type;
+	}
 
-    public Document() {
+	public Document() {
     }
 
 	public Integer getId() {
@@ -52,11 +62,11 @@ public class Document {
 	}
 
 	public String getDateCreation() {
-		return dateCreation;
+		return anneeDeCreation;
 	}
 
 	public void setDateCreation(String dateCreation) {
-		this.dateCreation = dateCreation;
+		this.anneeDeCreation = dateCreation;
 	}
 
 	public TypeFolder getType() {
@@ -81,6 +91,12 @@ public class Document {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	@Override
+	public String toString() {
+		return "Document [id=" + id + ", name=" + name + ", path=" + path + ", dateCreation=" + anneeDeCreation + ", type="
+				+ type + "]";
 	}
     
     

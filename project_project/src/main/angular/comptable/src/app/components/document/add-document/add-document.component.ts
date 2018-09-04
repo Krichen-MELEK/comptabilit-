@@ -1,6 +1,10 @@
+import { element } from 'protractor';
+import { Document } from './../../../models/document.model';
 import { DocumentService } from '../../../services/document.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { HttpResponse, HttpEventType } from '../../../../../node_modules/@angular/common/http';
+
 
 @Component({
   selector: 'app-add-document',
@@ -9,22 +13,38 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AddDocumentComponent implements OnInit {
 
-  progress: { percentage: number } = { percentage: 0 };
-  addDocumentForm: FormGroup;
-
+  documentForm: FormGroup;
+  progress: { percentage: number , varFileName: string  };
   constructor(public documentService: DocumentService) { 
-    this.addDocumentForm = new FormGroup({
-      file: new FormControl()
+    this.documentForm = new FormGroup({
+      annee: new FormControl(),
+      type: new FormControl(),
     })
   }
 
   ngOnInit() {
   }
+  selectedFiles: FileList;
 
-  onSubmit({value,valid}){
-    console.log(value);
-    this.documentService.addDocument(value).subscribe(data =>{
-      console.log("goo");
-    },error=> console.error(error));
-  }
+ selectFile(event) {
+  this.selectedFiles = undefined;
+  this.selectedFiles = event.target.files;
+  Array.from(this.selectedFiles).forEach(element => {
+    element["progress"] = 0;
+  });
+
+ }
+ upload({value,valid}) {
+  Array.from(this.selectedFiles).forEach(currentFileUpload => { 
+    this.documentService.addDocument(currentFileUpload,value).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        currentFileUpload["progress"] = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is completely uploaded!');
+      }
+     });
+   });
+
+ }
+
 }
