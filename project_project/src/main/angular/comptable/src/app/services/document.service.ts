@@ -20,7 +20,7 @@ export class DocumentService {
     formdata.append('file', file);
     formdata.append('type', value['type']);
     formdata.append('annee',value['annee']);
-    const req = new HttpRequest('POST', 'client/upload', formdata, {
+    const req = new HttpRequest('POST', '/api/client/upload', formdata, {
       reportProgress: true,
       responseType: 'text'
     }
@@ -29,10 +29,10 @@ export class DocumentService {
     return this.http.request(req);
   }
   getDocument(id: string) {
-    return this.http.get<Document>('/document/' + id);
+    return this.http.get<Document>('/api/document/' + id);
   }
 
   getAllDocuments(){
-    return this.http.get("/document/getAll");
+    return this.http.get("/api/document/getAll");
   }
 }

@@ -7,11 +7,9 @@ import org.springframework.context.ApplicationContext;
 
 import susitio.comptabilite.project.dao.ClientRepository;
 import susitio.comptabilite.project.dao.MessageRepository;
-import susitio.comptabilite.project.dao.PersonneRepository;
 import susitio.comptabilite.project.entities.Client;
 import susitio.comptabilite.project.entities.Message;
 import susitio.comptabilite.project.services.ClientService;
-import susitio.comptabilite.project.services.PersonneService;
 
 @SpringBootApplication
 public class ProjectApplication {
@@ -26,8 +24,6 @@ public class ProjectApplication {
 	public ClientRepository clientRepository;
 	@Autowired
 	public MessageRepository messageRepository ;
-	@Autowired
-	public PersonneService personneService;
 	@Autowired
 	public ClientService clientService ;
 	

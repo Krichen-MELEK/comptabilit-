@@ -14,23 +14,23 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   addClient(client) {
-    return this.http.post<Client>('/client/add', client);
+    return this.http.post<Client>('/api/client/add', client);
   }
 
   getClient(id: number) {
-    return this.http.get<Client>('/admin/client/' + id);
+    return this.http.get<Client>('/api/admin/client/' + id);
   }
 
   getClientValidation(valide: Boolean){
-    return this.http.get('/admin/client/validation/' + valide) ; 
+    return this.http.get('/api/admin/client/validation/' + valide) ; 
   }
   getAllClients(){
-    return this.http.get("/client/getAll");
+    return this.http.get("/api/client/getAll");
   }
   deleteClient(id:number){
-    return this.http.delete("/admin/client/delete/"+id) ; 
+    return this.http.delete("/api/admin/client/delete/"+id) ; 
   }
   approuverClient(id:number){
-    return this.http.get("/admin/client/approuver/"+id)
+    return this.http.get("/api/admin/client/approuver/"+id)
   }
 }

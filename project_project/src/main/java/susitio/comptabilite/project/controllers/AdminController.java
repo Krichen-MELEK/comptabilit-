@@ -1,16 +1,29 @@
 package susitio.comptabilite.project.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import susitio.comptabilite.project.entities.*;
-import susitio.comptabilite.project.services.*;
-
-import javax.annotation.security.PermitAll;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import susitio.comptabilite.project.entities.Client;
+import susitio.comptabilite.project.entities.Collaborateur;
+import susitio.comptabilite.project.entities.Message;
+import susitio.comptabilite.project.services.AdminService;
+import susitio.comptabilite.project.services.ClientService;
+import susitio.comptabilite.project.services.CollaborateurService;
+import susitio.comptabilite.project.services.MessageService;
+import susitio.comptabilite.project.services.NotificationService;
+import susitio.comptabilite.project.services.PersonneService;
+
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 public class AdminController {
 
     @Autowired

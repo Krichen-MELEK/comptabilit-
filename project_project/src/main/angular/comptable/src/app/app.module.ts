@@ -1,7 +1,8 @@
+import { MessageService } from './services/message.service';
 import { ClientComponent } from './components/client/client.component';
 import { ClientService } from './services/client.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,6 +36,9 @@ import { AddCollaborateurComponent } from './components/collaborateur/add-collab
 import { CollaborateurService } from './services/collaborateur.service';
 import { ListClientNonValideComponent } from './components/client/list-client-non-valide/list-client-non-valide.component';
 import { EmailComposeClientComponent } from './components/email/email-compose-client/email-compose-client.component';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '../../node_modules/@angular/common';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -72,13 +76,15 @@ import { EmailComposeClientComponent } from './components/email/email-compose-cl
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [
     ClientService,
     DocumentService,
-    CollaborateurService
+    CollaborateurService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

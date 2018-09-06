@@ -14,7 +14,7 @@ import susitio.comptabilite.project.services.ClientService;
 import susitio.comptabilite.project.services.DocumentService;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/api/client")
 public class ClientController {
 
 	private static String UPLOAD_FOLDER = "C://test//";

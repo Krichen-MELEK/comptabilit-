@@ -12,17 +12,17 @@ export class CollaborateurService {
   constructor(private http: HttpClient) { }
 
   addCollaborateur(collaborateur) {
-    return this.http.post<Collaborateur>('/collaborateur/add', collaborateur);
+    return this.http.post<Collaborateur>('/api/collaborateur/add', collaborateur);
   }
 
   getCollaborateur(id: string) {
-    return this.http.get<Collaborateur>('/collaborateur/' + id);
+    return this.http.get<Collaborateur>('/api/collaborateur/' + id);
   }
 
   deleteCollaborateur(id: number){
-    return this.http.delete('/collaborateur/delete/'+id) ; 
+    return this.http.delete('/api/collaborateur/delete/'+id) ; 
   }
   getAllCollaborateurs(){
-    return this.http.get("/collaborateur/getAll");
+    return this.http.get("/api/collaborateur/getAll");
   }
 }
