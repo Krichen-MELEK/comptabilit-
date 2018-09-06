@@ -26,7 +26,7 @@
                                                     <div class="">
                                                         <ul class="message-list">
                                                             <li *ngFor=" let message of messages" [ngClass]="{'unread':!message.lu}">
-                                                                <a href="email-read.html">
+                                                                <a [routerLink]="['../email-read', message.id]" >
                                                                     <div class="col-mail col-mail-1">
                                                                         <div class="checkbox-wrapper-mail">
                                                                             <!-- <input type="checkbox" > -->

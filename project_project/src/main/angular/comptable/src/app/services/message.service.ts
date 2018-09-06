@@ -24,7 +24,7 @@ export class MessageService {
   }
 
   getMessageById(id:number){
-    return this.http.get<Message>('/api/message/view/'+id);
+    return this.http.get<Message>('/api/admin/message/view/'+id);
   }
 
 }

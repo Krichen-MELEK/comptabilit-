@@ -9,7 +9,7 @@ import java.util.List;
 public interface MessageService {
 
     public List<Message> getMessagesEmmeteur(Personne personne) ;
-    public ArrayList<Message> getMessagesRecepteur(Personne personne) ;
+    public List<Message> getMessagesRecepteur(Personne personne) ;
     public Message getMessageById(int id) ;
     public void addMessage(Message message) ;
     public void deleteMessage(int id) ;

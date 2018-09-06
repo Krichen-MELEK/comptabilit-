@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   { path: 'client', component: ClientComponent,children:[
     {path: 'email-compose', component: EmailComposeClientComponent},
-    {path: 'email-read', component: EmailReadComponent},
+    {path: 'email-read/:id', component: EmailReadComponent},
     {path: 'email-inbox', component: EmailInboxComponent},
     {path: 'document-add', component: AddDocumentComponent},
     {path: 'document', component: DocumentComponent}
