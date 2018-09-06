@@ -39,6 +39,8 @@ import { EmailComposeClientComponent } from './components/email/email-compose-cl
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '../../node_modules/@angular/common';
 import { AppRoutingModule } from './/app-routing.module';
+import { ClientLeftSidebarComponent } from './components/client/client-left-sidebar/client-left-sidebar.component';
+import { ClientPageContentComponent } from './components/client/client-page-content/client-page-content.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { AppRoutingModule } from './/app-routing.module';
     InscriptionComponent,
     AddCollaborateurComponent,
     ListClientNonValideComponent,
-    EmailComposeClientComponent
+    EmailComposeClientComponent,
+    ClientLeftSidebarComponent,
+    ClientPageContentComponent
   ],
   imports: [
     BrowserModule,

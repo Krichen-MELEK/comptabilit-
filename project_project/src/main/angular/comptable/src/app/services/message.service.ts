@@ -20,8 +20,11 @@ export class MessageService {
   }
 
   getMessageByClient(id:number){
-    console.log("getMessag") ; 
     return this.http.get('/api/admin/message/reception/view/all/'+id) ; 
+  }
+
+  getMessageById(id:number){
+    return this.http.get<Message>('/api/message/view/'+id);
   }
 
 }

@@ -11,37 +11,25 @@
              
               <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Clients</span></a>
                   <ul aria-expanded="false" class="collapse">
-                      <li><a [routerLink]="['/admin/clients',{ outlets: { 'contentTemplateAdmin': ['listEnAttente']}}]">Liste d'attente</a></li>
-                      <li><a [routerLink]="['/admin/clients',{ outlets: { 'contentTemplateAdmin': ['list']}}]">Gerer les clients</a></li>
+                      <li><a routerLink="client-list">Liste d'attente</a></li>
+                      <li><a routerLink="client-list-attente">Gerer les clients</a></li>
                   </ul>
               </li>
               <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-id-card"></i><span class="hide-menu">Collaborateurs</span></a>
                 <ul aria-expanded="false" class="collapse">
-                    <li><a [routerLink]="['/admin/collaborateurs',{ outlets: { 'contentTemplateAdmin': ['add']}}]">Nouveau Collaborateur</a></li>
-                    <li><a [routerLink]="['/admin/collaborateurs',{ outlets: { 'contentTemplateAdmin': ['list']}}]">gerer les collaborateurs</a></li>
+                    <li><a routerLink="collaborateur-new">Nouveau Collaborateur</a></li>
+                    <li><a routerLink="collaborateur-list">Gerer les collaborateurs</a></li>
                 </ul>
             </li>
             <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Email</span></a>
               <ul aria-expanded="false" class="collapse">
-                  <li><a [routerLink]="['/admin/email',{ outlets: { 'contentTemplateAdmin': ['compose']}}]">Compose</a></li>
-                  <li><a [routerLink]="['/admin/email',{ outlets: { 'contentTemplateAdmin': ['read']}}]">Read</a></li>
-                  <li><a [routerLink]="['/admin/email',{ outlets: { 'contentTemplateAdmin': ['inbox']}}]">Inbox</a></li>
+                  <li><a routerLink="email-compose">Composer</a></li>
+                  <li><a routerLink="email-inbox">Boite de réception</a></li>
               </ul>
-          </li>
-          <!-- 	<li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Components <span class="label label-rouded label-danger pull-right">6</span></span></a>
-                  <ul aria-expanded="false" class="collapse">
-                      <li><a href="uc-calender.html">Calender</a></li>
-                      <li><a href="uc-datamap.html">Datamap</a></li>
-                      <li><a href="uc-nestedable.html">Nestedable</a></li>
-                      <li><a href="uc-sweetalert.html">Sweetalert</a></li>
-                      <li><a href="uc-toastr.html">Toastr</a></li>
-                      <li><a href="uc-weather.html">Weather</a></li>
-                  </ul>
-              </li> -->
-       
+          </li>  
               <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Documents</span></a>
                   <ul aria-expanded="false" class="collapse">
-                      <li><a [routerLink]="['/admin/document',{ outlets: { 'contentTemplateAdmin': ['add']}}]">Nouveau Document</a></li>
+                      <li><a routerLink="document-add">Nouveau Document</a></li>
                   </ul>
               </li>
         

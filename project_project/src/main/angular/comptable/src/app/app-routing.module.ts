@@ -13,28 +13,43 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateAdminComponent } from './components/admin/template-admin.component';
+import { ClientComponent } from './components/client/client.component';
+import { CollaborateurComponent } from './components/collaborateur/collaborateur.component';
+import { DocumentComponent } from './components/document/document.component';
+import { EmailComposeClientComponent } from './components/email/email-compose-client/email-compose-client.component';
 
 
 
 const routes: Routes = [
   { path: 'admin', component: TemplateAdminComponent, children:[
-    { path: 'clients', children:[
-      {path:'list' ,outlet: 'contentTemplateAdmin', component: ListClientComponent},
-      {path:'listEnAttente' , outlet: 'contentTemplateAdmin', component: ListClientNonValideComponent}
-    ]},
-    { path: 'email',  children:[
-      {path:'compose',outlet: 'contentTemplateAdmin', component: EmailComposeComponent },
-      {path:'read',outlet: 'contentTemplateAdmin', component: EmailReadComponent },
-      {path:'inbox',outlet: 'contentTemplateAdmin', component: EmailInboxComponent }
-    ]},
-    { path: 'collaborateurs',  children:[
-      {path:'list',outlet: 'contentTemplateAdmin', component: ListCollaborateurComponent },
-      {path:'add',outlet: 'contentTemplateAdmin', component: AddCollaborateurComponent }
-    ]},
-    { path: 'document',  children:[
-      {path:'add',outlet: 'contentTemplateAdmin', component: AddDocumentComponent }
-    ]}
+    { path: 'client-list', component: ListClientComponent },
+    { path: 'client-list-attente', component: ListClientNonValideComponent },
+    { path: 'collaborateur-list', component: ListCollaborateurComponent },
+    { path: 'collaborateur-new', component: AddCollaborateurComponent },
+    { path: 'email-compose', component: EmailComposeComponent},
+    { path: 'email-inbox', component: EmailInboxComponent},
+    { path: 'email-read', component: EmailReadComponent},
+    { path: 'document-add', component: AddDocumentAdminComponent}
     ] 
+  },
+  { path: 'client', component: ClientComponent,children:[
+    {path: 'email-compose', component: EmailComposeClientComponent},
+    {path: 'email-read', component: EmailReadComponent},
+    {path: 'email-inbox', component: EmailInboxComponent},
+    {path: 'document-add', component: AddDocumentComponent},
+    {path: 'document', component: DocumentComponent}
+   ]
+  },
+  { path: 'collaborateur', component: CollaborateurComponent,children: [
+    { path: 'client-list', component: ListClientComponent },
+    { path: 'client-list-attente', component: ListClientNonValideComponent },
+    { path: 'collaborateur-list', component: ListCollaborateurComponent },
+    { path: 'collaborateur-new', component: AddCollaborateurComponent },
+    { path: 'email-compose', component: EmailComposeComponent},
+    { path: 'email-inbox', component: EmailInboxComponent},
+    { path: 'email-read', component: EmailReadComponent},
+    { path: 'document-add', component: AddDocumentAdminComponent}
+   ]
   },
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: '**', component: InscriptionComponent }
