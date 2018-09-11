@@ -15,16 +15,22 @@ export class EmailReadComponent implements OnInit {
   constructor(public messageService: MessageService,private route: ActivatedRoute) { 
     this.route.params.subscribe( params => {
       this.id = params.id ;
-      console.log(this.id) ; 
+      this.MessageLu() ; 
+      this.messageService.getMessageById(this.id).subscribe((result: any) => {
+        this.message = result;
+      }, error => console.error(error));
     });
+    
   }
   
   
   ngOnInit() {
-      this.messageService.getMessageById(this.id).subscribe((result: any) => {
-      this.message = result;
-      console.log(this.message) ; 
-    }, error => console.error(error));
+  }
+  
+  MessageLu(){
+    this.messageService.MessageLu(this.id).subscribe((result: any) => {
+      console.log("message lu") ; 
+    }, error => console.error(error)); 
   }
 
 }

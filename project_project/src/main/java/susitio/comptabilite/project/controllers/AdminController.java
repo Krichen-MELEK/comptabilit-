@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import susitio.comptabilite.project.entities.Client;
-import susitio.comptabilite.project.entities.Collaborateur;
-import susitio.comptabilite.project.entities.Message;
+import susitio.comptabilite.project.entities.*;
+import susitio.comptabilite.project.enums.TypeNotification;
 import susitio.comptabilite.project.services.AdminService;
 import susitio.comptabilite.project.services.ClientService;
 import susitio.comptabilite.project.services.CollaborateurService;
@@ -126,15 +125,19 @@ public class AdminController {
         messageService.luMessage(id);
     }
 
-    /*@GetMapping({"/notification/vu/{id}"})
+    @GetMapping({"/notification/vu/{id}"})
     public void vuNotification(@PathVariable final int id){
-        notificationService.vuNotification(id);
+        notificationService.luNotification(id);
     }
-
-    @GetMapping({"/notification/view/all/{idadmin}"})
-    public List<Notification> getNotifications(@PathVariable final int idadmin){
-        return notificationService.getNotificationByPersonne(idadmin) ;
-    }*/
+    @GetMapping({"/notification/delete/{id}"})
+    public void deleteNotification(@PathVariable final int id){
+        notificationService.deleteNotification(id);
+    }
+    @GetMapping({"/notification/message/{id}"})
+    public List<Notification> getNotificationMessageByIdPersonne(@PathVariable final int id){
+        Personne personne = personneService.getPersonneById(id) ;
+        return notificationService.getNotificationByPersinneAndType(personne, TypeNotification.message) ;
+    }
 
     @GetMapping({"/client/{id}"})
     public Client getPersonne(@PathVariable final int id){

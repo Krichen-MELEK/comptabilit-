@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import susitio.comptabilite.project.dao.DocumentRepository;
+import susitio.comptabilite.project.dao.NotificationRepository;
 import susitio.comptabilite.project.entities.Document;
+import susitio.comptabilite.project.entities.Notification;
 import susitio.comptabilite.project.enums.TypeFolder;
+import susitio.comptabilite.project.enums.TypeNotification;
 
 @Service
 public class DocumentServiceImpl implements DocumentService{
@@ -20,6 +23,9 @@ public class DocumentServiceImpl implements DocumentService{
 	
 	@Autowired
 	DocumentRepository documentRepository;
+	@Autowired
+	NotificationService notificationService ;
+
     @Override
     public List<Document> getDocuments() {
         return documentRepository.findAll();
@@ -55,5 +61,8 @@ public class DocumentServiceImpl implements DocumentService{
 	    	  } catch (Exception e) {
 	    	   message = "Fail to upload Profile Picture" + file.getOriginalFilename() + "!";
 	    	  }
+	/*	String contenueNotification = client.getNom() + "\n" + message.getObject() ;
+		Notification notification = new Notification(TypeNotification.document,contenueNotification,document.getId()) ;
+		notificationService.addNotification(notification); */
 	}
 }

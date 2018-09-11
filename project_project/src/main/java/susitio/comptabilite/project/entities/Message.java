@@ -17,9 +17,10 @@ import java.util.Date;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id ;
     private String object ;
+    @Lob
     private String contenue ;
     private Boolean lu ;
     private String dateEnvoie ;

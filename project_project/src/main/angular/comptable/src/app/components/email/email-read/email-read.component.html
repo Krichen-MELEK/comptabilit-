@@ -18,34 +18,38 @@
               
                     </div>
                     <!-- End Left sidebar -->
-                    <div class="inbox-rightbar">
+                    <div id="escapingBallG"  *ngIf="!message">
+                            <p>CHARGEMENT</p>
+                            <div id="escapingBall_1" class="escapingBallG"></div>
+                        </div>
+                    <div class="inbox-rightbar" *ngIf="message" >
 
               
                         <div class="mt-4">
-                            <h4>{{message.personneRecepteur.nomSociete}}</h4>
+                            <h4  >{{message?.personneRecepteur.nomSociete}}</h4>
 
                             <hr/>
 
                             <div class="media mb-4 mt-1">
-                                <div class="media-body">
-                                    <span class="pull-right">{{message.dateEnvoie}}</span>
-                                    <h6 class="m-0">{{message.object}}</h6>
+                                <div class="media-body" >
+                                    <span  class="pull-right">{{message?.dateEnvoie}}</span>
+                                    <h6 class="m-0">{{message?.object}}</h6>
                                 </div>
                             </div>
 
-                           <p> {{message.contenue}}</p>
-
+                           <p [innerHTML]=" message.contenue | nl2br"></p>
+                           
                             <hr/>
 
                   
                         </div>
                         <!-- card-box -->
-
+                      
            
                         <div class="text-right">
                             <button type="button" class="btn btn-primary waves-effect waves-light w-md m-b-30">Repondre</button>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>

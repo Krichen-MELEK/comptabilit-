@@ -27,4 +27,8 @@ export class MessageService {
     return this.http.get<Message>('/api/admin/message/view/'+id);
   }
 
+  MessageLu(id: number){
+    return this.http.get('/api/admin/message/lu/'+id) ; 
+  }
+
 }

@@ -48,10 +48,12 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void addMessage(Message message) {
         Client client = clientService.getClientById(message.getPersonneEmetteur().getId()) ;
-        String contenueNotification = client.getNom() + "\n" + message.getObject() ;
-        Notification notification = new Notification(TypeNotification.message,contenueNotification,message.getId()) ;
+        String contenueNotification = message.getObject() ;
+        System.out.println(TypeNotification.message);
+        Notification notification = new Notification(TypeNotification.message,contenueNotification,messageRepository.saveAndFlush(message).getId(),personneService.getPersonneById(1)) ;
         notificationService.addNotification(notification);
-        messageRepository.save(message) ;
+
+
     }
 
     @Override
@@ -63,6 +65,7 @@ public class MessageServiceImpl implements MessageService {
     public void luMessage(int id) {
         Message message = messageRepository.findById(id).get() ;
         message.setLu(true);
+        messageRepository.save(message) ;
     }
 
 }

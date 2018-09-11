@@ -1,10 +1,6 @@
 package susitio.comptabilite.project.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import susitio.comptabilite.project.enums.TypeNotification;
 
@@ -20,6 +16,7 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id  ;
+	@Enumerated(EnumType.STRING)
     private TypeNotification typeNotification;
     private String contenue ;
     private Integer idobject ;
@@ -30,18 +27,23 @@ public class Notification {
 
     public Notification() {
 		Date date = Calendar.getInstance().getTime();
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		String today = formatter.format(date);
     	this.vu = false ;
     	this.dateCreation = today ;
     }
 
-	public Notification(TypeNotification typeNotification, String contenue, Integer idobject) {
+	public Notification(TypeNotification typeNotification, String contenue, Integer idobject,Personne personne) {
 		super();
+		Date date = Calendar.getInstance().getTime();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		String today = formatter.format(date);
+		this.dateCreation = today ;
 		this.typeNotification = typeNotification;
 		this.contenue = contenue;
 		this.idobject = idobject;
 		this.vu = false;
+		this.personne = personne ;
 	}
 
 	public int getId() {
@@ -92,5 +94,11 @@ public class Notification {
 		this.personne = personne;
 	}
 
-    
+	public String getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(String dateCreation) {
+		this.dateCreation = dateCreation;
+	}
 }

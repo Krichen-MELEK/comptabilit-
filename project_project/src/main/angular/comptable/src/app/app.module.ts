@@ -41,6 +41,10 @@ import { APP_BASE_HREF } from '../../node_modules/@angular/common';
 import { AppRoutingModule } from './/app-routing.module';
 import { ClientLeftSidebarComponent } from './components/client/client-left-sidebar/client-left-sidebar.component';
 import { ClientPageContentComponent } from './components/client/client-page-content/client-page-content.component';
+import {Nl2BrPipeModule} from 'nl2br-pipe';
+import { ProfileClientComponent } from './components/client/profile-client/profile-client.component';
+import { EditClientComponent } from './components/client/edit-client/edit-client.component';
+import { HomeTemplateComponent } from './components/home-template/home-template.component';
 
 @NgModule({
   declarations: [
@@ -74,13 +78,17 @@ import { ClientPageContentComponent } from './components/client/client-page-cont
     ListClientNonValideComponent,
     EmailComposeClientComponent,
     ClientLeftSidebarComponent,
-    ClientPageContentComponent
+    ClientPageContentComponent,
+    ProfileClientComponent,
+    EditClientComponent,
+    HomeTemplateComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    Nl2BrPipeModule,
     AppRoutingModule
   ],
   providers: [

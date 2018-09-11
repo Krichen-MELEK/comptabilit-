@@ -18,7 +18,7 @@ export class ClientService {
   }
 
   getClient(id: number) {
-    return this.http.get<Client>('/api/admin/client/' + id);
+    return this.http.get<Client>('/api/admin/client/view/' + id);
   }
 
   getClientValidation(valide: Boolean){

@@ -17,6 +17,8 @@ import { ClientComponent } from './components/client/client.component';
 import { CollaborateurComponent } from './components/collaborateur/collaborateur.component';
 import { DocumentComponent } from './components/document/document.component';
 import { EmailComposeClientComponent } from './components/email/email-compose-client/email-compose-client.component';
+import { ProfileClientComponent } from './components/client/profile-client/profile-client.component';
+import { HomeTemplateComponent } from './components/home-template/home-template.component';
 
 
 
@@ -37,7 +39,8 @@ const routes: Routes = [
     {path: 'email-read/:id', component: EmailReadComponent},
     {path: 'email-inbox', component: EmailInboxComponent},
     {path: 'document-add', component: AddDocumentComponent},
-    {path: 'document', component: DocumentComponent}
+    {path: 'document', component: DocumentComponent},
+    {path: 'profile', component: ProfileClientComponent}
    ]
   },
   { path: 'collaborateur', component: CollaborateurComponent,children: [
@@ -51,6 +54,8 @@ const routes: Routes = [
     { path: 'document-add', component: AddDocumentAdminComponent}
    ]
   },
+  { path: 'home' , component: HomeTemplateComponent} , 
+  { path: 'inscription', component:InscriptionComponent},
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: '**', component: InscriptionComponent }
 ];

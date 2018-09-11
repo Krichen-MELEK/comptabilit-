@@ -31,9 +31,9 @@ public class PayementServiceImpl implements PayementService {
 
     @Override
     public void addPayement(Payment payment) {
-        String contenue = "Facture crée le : " ;
+      /*  String contenue = "Facture crée le : " ;
         Notification notification = new Notification(TypeNotification.payement,contenue,payment.getId()) ;
-        notificationService.addNotification(notification);
+        notificationService.addNotification(notification);*/
         payementRepository.save(payment) ;
     }
 
