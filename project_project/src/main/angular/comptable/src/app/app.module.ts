@@ -45,6 +45,7 @@ import {Nl2BrPipeModule} from 'nl2br-pipe';
 import { ProfileClientComponent } from './components/client/profile-client/profile-client.component';
 import { EditClientComponent } from './components/client/edit-client/edit-client.component';
 import { HomeTemplateComponent } from './components/home-template/home-template.component';
+import { HomeComponent } from './components/home-template/home/home.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { HomeTemplateComponent } from './components/home-template/home-template.
     ClientPageContentComponent,
     ProfileClientComponent,
     EditClientComponent,
-    HomeTemplateComponent
+    HomeTemplateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
