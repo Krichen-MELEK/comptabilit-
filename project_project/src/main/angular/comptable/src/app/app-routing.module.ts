@@ -19,6 +19,12 @@ import { DocumentComponent } from './components/document/document.component';
 import { EmailComposeClientComponent } from './components/email/email-compose-client/email-compose-client.component';
 import { ProfileClientComponent } from './components/client/profile-client/profile-client.component';
 import { HomeTemplateComponent } from './components/home-template/home-template.component';
+import { SousListDocumentComponent } from './components/document/list-document/sous-list-document/sous-list-document.component';
+import { DossierJuridiqueComponent } from './components/document/list-document/sous-list-document/dossier-juridique/dossier-juridique.component';
+import { ViewDocumentComponent } from './components/document/view-document/view-document.component';
+import { BilanAnnuelComponent } from './components/document/list-document/sous-list-document/bilan-annuel/bilan-annuel.component';
+import { BilanMoisComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois.component';
+import { BilanMoisDetailsComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois-details/bilan-mois-details.component';
 
 
 
@@ -40,7 +46,13 @@ const routes: Routes = [
     {path: 'email-inbox', component: EmailInboxComponent},
     {path: 'document-add', component: AddDocumentComponent},
     {path: 'document', component: DocumentComponent},
-    {path: 'profile', component: ProfileClientComponent}
+    {path: 'profile', component: ProfileClientComponent},
+    {path: 'sous-document/:annee', component: SousListDocumentComponent},
+    {path: 'dossierJuridique/:annee', component: DossierJuridiqueComponent},
+    {path: 'document-view/:id', component: ViewDocumentComponent},
+    {path: 'bilanAnnuel/:annee', component: BilanAnnuelComponent},
+    {path: 'bilanMensuel/:annee', component: BilanMoisComponent},
+    {path: 'bilanMensuelDetails/:annee/:mois', component: BilanMoisDetailsComponent}
    ]
   },
   { path: 'collaborateur', component: CollaborateurComponent,children: [

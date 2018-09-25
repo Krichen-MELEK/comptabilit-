@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '../../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-sous-list-document',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SousListDocumentComponent implements OnInit {
 
-  constructor() { }
+  annee: number ; 
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe( params => {
+      this.annee = params.annee ;
+    });
+   }
 
   ngOnInit() {
   }

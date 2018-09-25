@@ -21,9 +21,6 @@ public class DossierAnnuel {
     private Integer id ;
     private String nom ;
     private String annee ;
-    @OneToMany(mappedBy="dossierAnnuel")
-    @JsonIgnore
-    private List<Document> documents ;
     @ManyToOne
     private Client client ;
 
@@ -34,7 +31,6 @@ public class DossierAnnuel {
     public DossierAnnuel(String nom, String annee, Client client) {
         this.nom = nom;
         this.annee = annee;
-        this.documents = new ArrayList<Document>();
         this.client = client;
     }
 }

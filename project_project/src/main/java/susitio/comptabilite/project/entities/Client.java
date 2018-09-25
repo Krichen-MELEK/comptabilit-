@@ -22,9 +22,6 @@ public class Client extends Personne {
     private boolean validation;
     @OneToMany(mappedBy = "client")
     @JsonIgnore
-    private List<Document> documents ;
-    @OneToMany(mappedBy = "client")
-    @JsonIgnore
     private List<DossierAnnuel> dossierAnnuels ;
     @OneToMany(mappedBy = "client")
     @JsonIgnore
@@ -96,9 +93,7 @@ public class Client extends Personne {
         return validation;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
+
 
     public List<DossierAnnuel> getDossierAnnuels() {
         return dossierAnnuels;
@@ -140,9 +135,7 @@ public class Client extends Personne {
         this.validation = validation;
     }
 
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
+
 
     public void setDossierAnnuels(List<DossierAnnuel> dossierAnnuels) {
         this.dossierAnnuels = dossierAnnuels;

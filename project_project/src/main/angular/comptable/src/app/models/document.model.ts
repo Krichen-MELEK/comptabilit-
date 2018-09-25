@@ -1,30 +1,25 @@
+import { Client } from "./client.model";
+
 enum TypeFolder {
 	dossierJuridique,
 	dossierAnnuel,
-	janvier,
-	fevrier,
-	mars,	
-	avril,	
-	mai,	
-	juin,	
-	juillet,	
-	aout,
-	septembre,	
-	octobre,	
-	novembre,	
-	decembre
+	Janvier,
+	Février,
+	Mars,	
+	Avril,	
+	Mai,	
+	Juin,	
+	Juillet,	
+	Août,
+	Septembrer,	
+	Octobre,	
+	Novembre,	
+	Décembre
 }
 export class Document {
 
     public id : number;
-    public path : String;
-    public anneeDeCreation : String;
-	public type : TypeFolder;
-	public name : string;
-	constructor (path?:string , anneeDeCreation?:string , type?:TypeFolder)
-	{
-		this.anneeDeCreation=anneeDeCreation;
-		this.path=path;
-		this.type=type;
-	}
+	constructor (public name: string,public path:string ,public anneeDeCreation:string ,public type:TypeFolder,public personneRecepteurDocument: Client,public personneEmmeteurDocument: Client)
+	{}
+
 }

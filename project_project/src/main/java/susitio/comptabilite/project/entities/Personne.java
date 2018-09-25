@@ -34,7 +34,29 @@ public class Personne {
 	@OneToMany(mappedBy = "personne")
 	@JsonIgnore
 	private List<Notification> notifications ;
-	
+	@OneToMany(mappedBy = "personneEmmeteurDocument")
+	@JsonIgnore
+	private List<Document> documentsEmmetteur ;
+	@OneToMany(mappedBy = "personneRecepteurDocument")
+	@JsonIgnore
+	private List<Document> documentsRecepteur ;
+
+	public List<Document> getDocumentsEmmetteur() {
+		return documentsEmmetteur;
+	}
+
+	public void setDocumentsEmmetteur(List<Document> documentsEmmetteur) {
+		this.documentsEmmetteur = documentsEmmetteur;
+	}
+
+	public List<Document> getDocumentsRecepteur() {
+		return documentsRecepteur;
+	}
+
+	public void setDocumentsRecepteur(List<Document> documentsRecepteur) {
+		this.documentsRecepteur = documentsRecepteur;
+	}
+
 	public Personne() {
 		super();
 		// TODO Auto-generated constructor stub

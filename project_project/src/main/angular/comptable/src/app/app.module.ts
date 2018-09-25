@@ -27,7 +27,6 @@ import { ProfileCollaborateurComponent } from './components/collaborateur/profil
 import { EditCollaborateurComponent } from './components/collaborateur/edit-collaborateur/edit-collaborateur.component';
 import { ListDocumentComponent } from './components/document/list-document/list-document.component';
 import { BilanAnnuelComponent } from './components/document/list-document/sous-list-document/bilan-annuel/bilan-annuel.component';
-import { BilanTrimestrielComponent } from './components/document/list-document/sous-list-document/bilan-trimestriel/bilan-trimestriel.component';
 import { BilanMoisComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois.component';
 import { SousListDocumentComponent } from './components/document/list-document/sous-list-document/sous-list-document.component';
 import { AddDocumentAdminComponent } from './components/document/add-document-admin/add-document-admin.component';
@@ -46,9 +45,17 @@ import { ProfileClientComponent } from './components/client/profile-client/profi
 import { EditClientComponent } from './components/client/edit-client/edit-client.component';
 import { HomeTemplateComponent } from './components/home-template/home-template.component';
 import { HomeComponent } from './components/home-template/home/home.component';
+import { PdfComponent } from './components/home-template/pdf/pdf.component';
+import { PdfDetailsComponent } from './components/home-template/pdf/pdf-details/pdf-details.component';
+import { DossierJuridiqueComponent } from './components/document/list-document/sous-list-document/dossier-juridique/dossier-juridique.component';
+import { ViewDocumentComponent } from './components/document/view-document/view-document.component';
+import { SafePipe } from './services/safe-pipe.service';
+import { PdfViewerComponent } from 'ng2-pdf-viewer';
+import { BilanMoisDetailsComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois-details/bilan-mois-details.component';
 
 @NgModule({
   declarations: [
+    SafePipe,
     AppComponent,
     ClientComponent,
     DocumentComponent,
@@ -70,7 +77,6 @@ import { HomeComponent } from './components/home-template/home/home.component';
     EditCollaborateurComponent,
     ListDocumentComponent,
     BilanAnnuelComponent,
-    BilanTrimestrielComponent,
     BilanMoisComponent,
     SousListDocumentComponent,
     AddDocumentAdminComponent,
@@ -83,7 +89,13 @@ import { HomeComponent } from './components/home-template/home/home.component';
     ProfileClientComponent,
     EditClientComponent,
     HomeTemplateComponent,
-    HomeComponent
+    HomeComponent,
+    PdfComponent,
+    PdfDetailsComponent,
+    DossierJuridiqueComponent,
+    ViewDocumentComponent,
+    PdfViewerComponent,
+    BilanMoisDetailsComponent
   ],
   imports: [
     BrowserModule,

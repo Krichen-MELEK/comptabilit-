@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import susitio.comptabilite.project.entities.Document;
+import susitio.comptabilite.project.entities.Personne;
 import susitio.comptabilite.project.enums.TypeFolder;
 
 public interface DocumentService {
     public List<Document> getDocuments() ;
+    public List<Document> getDossier(String annee, Personne personne, TypeFolder type) ;
     public Document getDocumentById(int Id) ;
     public void deleteDocument(int id) ;
-	public void uploadDocuments(MultipartFile file, TypeFolder type, String annee);
+	public void uploadDocuments(MultipartFile file, TypeFolder type, String annee,Personne personneEmmetteur, Personne personneRecepteur);
 }

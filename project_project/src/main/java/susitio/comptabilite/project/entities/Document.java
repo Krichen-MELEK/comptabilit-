@@ -1,10 +1,6 @@
 package susitio.comptabilite.project.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import susitio.comptabilite.project.enums.TypeFolder;
 
@@ -18,20 +14,45 @@ public class Document {
     private String name;
     private String path ;
     private String anneeDeCreation  ;
+	@Enumerated(EnumType.STRING)
     private TypeFolder type ;
     @ManyToOne
-    private DossierAnnuel dossierAnnuel ;
-    @ManyToOne
-    private Client client ;
-    
-    
-    
-    public Document(String name, String path, String anneeDeCreation, TypeFolder type) {
+    private Personne personneEmmeteurDocument ;
+	@ManyToOne
+	private Personne personneRecepteurDocument ;
+
+	public String getAnneeDeCreation() {
+		return anneeDeCreation;
+	}
+
+	public void setAnneeDeCreation(String anneeDeCreation) {
+		this.anneeDeCreation = anneeDeCreation;
+	}
+
+	public Personne getPersonneEmmeteurDocument() {
+		return personneEmmeteurDocument;
+	}
+
+	public void setPersonneEmmeteurDocument(Personne personneEmmeteurDocument) {
+		this.personneEmmeteurDocument = personneEmmeteurDocument;
+	}
+
+	public Personne getPersonneRecepteurDocument() {
+		return personneRecepteurDocument;
+	}
+
+	public void setPersonneRecepteurDocument(Personne personneRecepteurDocument) {
+		this.personneRecepteurDocument = personneRecepteurDocument;
+	}
+
+	public Document(String name, String path, String anneeDeCreation, TypeFolder type,Personne personneEmmetteur, Personne personneRecepteur) {
 		super();
 		this.name = name;
 		this.path = path;
 		this.anneeDeCreation = anneeDeCreation;
 		this.type = type;
+		this.personneEmmeteurDocument = personneEmmetteur ;
+		this.personneRecepteurDocument = personneRecepteur ;
 	}
 
 	public Document() {
@@ -61,14 +82,6 @@ public class Document {
 		this.path = path;
 	}
 
-	public String getDateCreation() {
-		return anneeDeCreation;
-	}
-
-	public void setDateCreation(String dateCreation) {
-		this.anneeDeCreation = dateCreation;
-	}
-
 	public TypeFolder getType() {
 		return type;
 	}
@@ -77,21 +90,8 @@ public class Document {
 		this.type = type;
 	}
 
-	public DossierAnnuel getDossierAnnuel() {
-		return dossierAnnuel;
-	}
 
-	public void setDossierAnnuel(DossierAnnuel dossierAnnuel) {
-		this.dossierAnnuel = dossierAnnuel;
-	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 
 	@Override
 	public String toString() {

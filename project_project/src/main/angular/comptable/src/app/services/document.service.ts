@@ -2,10 +2,14 @@ import { Document } from './../models/document.model';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from '../../../node_modules/rxjs';
-
+import {ResponseContentType } from '@angular/http';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    "Authorization": "Bearer "
+  }), responseType: ResponseContentType.ArrayBuffer 
 };
 
 @Injectable()
@@ -28,11 +32,16 @@ export class DocumentService {
     console.log(formdata);
     return this.http.request(req);
   }
-  getDocument(id: string) {
-    return this.http.get<Document>('/api/document/' + id);
+  getDocument(id: number) {
+    return this.http.get<Document>('/api/client/document/' + id);
   }
-
-  getAllDocuments(){
-    return this.http.get("/api/document/getAll");
+  getDossierJuridique(annee:number,id: number){
+    return this.http.get<Document>('/api/client/document/dossierJuridique/'+annee+'/'+id) ; 
   }
+ getBilanAnnuel(annee:number,id: number){
+  return this.http.get<Document>('/api/client/document/bilanAnnuel/'+annee+'/'+id) ;
+ }
+ getBilanMensuel(annee:number,mois: String,id: number){
+  return this.http.get<Document>('/api/client/document/bilanMensuel/'+annee+'/'+mois+'/'+id) ;
+ }
 }

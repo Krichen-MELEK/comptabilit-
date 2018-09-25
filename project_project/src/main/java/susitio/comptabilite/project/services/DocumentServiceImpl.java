@@ -13,13 +13,14 @@ import susitio.comptabilite.project.dao.DocumentRepository;
 import susitio.comptabilite.project.dao.NotificationRepository;
 import susitio.comptabilite.project.entities.Document;
 import susitio.comptabilite.project.entities.Notification;
+import susitio.comptabilite.project.entities.Personne;
 import susitio.comptabilite.project.enums.TypeFolder;
 import susitio.comptabilite.project.enums.TypeNotification;
 
 @Service
 public class DocumentServiceImpl implements DocumentService{
 	
-	private final Path rootLocation = Paths.get("ProfilePictureStore");
+	private final Path rootLocation = Paths.get("src\\main\\angular\\comptable\\src\\assets\\ProfilePictureStore");
 	
 	@Autowired
 	DocumentRepository documentRepository;
@@ -31,7 +32,12 @@ public class DocumentServiceImpl implements DocumentService{
         return documentRepository.findAll();
     }
 
-    @Override
+	@Override
+	public List<Document> getDossier(String annee, Personne personne, TypeFolder type) {
+		return documentRepository.getDocumentByAnneeDeCreationAndPersonneEmmeteurDocumentAndType(annee, personne, type);
+	}
+
+	@Override
     public Document getDocumentById(int id) {
         return documentRepository.findById(id).get();
     }
@@ -42,8 +48,8 @@ public class DocumentServiceImpl implements DocumentService{
     }
 
 	@Override
-	public void uploadDocuments(MultipartFile file , TypeFolder type , String annee) {
-		Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,type);
+	public void uploadDocuments(MultipartFile file , TypeFolder type , String annee,Personne personneEmmetteur, Personne personneRecepteur) {
+		Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,type,personneEmmetteur,personneRecepteur);
 		documentRepository.save(document);
 		String message = "";
 		try {
