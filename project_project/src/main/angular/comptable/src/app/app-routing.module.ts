@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { EmailReadComponent } from './components/email/email-read/email-read.component';
 import { EmailInboxComponent } from './components/email/email-inbox/email-inbox.component';
 import { EmailComposeComponent } from './components/email/email-compose/email-compose.component';
@@ -67,6 +68,7 @@ const routes: Routes = [
    ]
   },
   { path: 'home' , component: HomeTemplateComponent} , 
+  { path:'login' , component: LoginComponent},
   { path: 'inscription', component:InscriptionComponent},
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: '**', component: InscriptionComponent }

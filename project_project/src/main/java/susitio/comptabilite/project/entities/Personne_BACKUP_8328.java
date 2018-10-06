@@ -49,8 +49,7 @@ public class Personne implements UserDetails{
 	@OneToMany(mappedBy = "personne")
 	@JsonIgnore
 	private List<Notification> notifications ;
-@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE,CascadeType.PERSIST})
-	private Role role;
+<<<<<<< HEAD
 	@OneToMany(mappedBy = "personneEmmeteurDocument")
 	@JsonIgnore
 	private List<Document> documentsEmmetteur ;
@@ -74,6 +73,11 @@ public class Personne implements UserDetails{
 		this.documentsRecepteur = documentsRecepteur;
 	}
 
+=======
+	@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE,CascadeType.PERSIST})
+	private Role role;
+	
+>>>>>>> f9a007c654a6c4bb6f939aadacc3a3e7cdd6c087
 	public Personne() {
 		this.messagesEmetteur = new ArrayList<Message>();
 		this.messagesRecepteur = new ArrayList<Message>();

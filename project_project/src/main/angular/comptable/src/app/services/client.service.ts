@@ -14,6 +14,7 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   addClient(client) {
+    console.log(client);
     return this.http.post<Client>('/api/client/add', client);
   }
 

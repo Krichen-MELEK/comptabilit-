@@ -1,12 +1,12 @@
 package susitio.comptabilite.project.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @PrimaryKeyJoinColumn(name="ID")
@@ -144,4 +144,14 @@ public class Client extends Personne {
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
     }
+
+
+	@Override
+	public String toString() {
+		return "Client [getMotDePasse()=" + getMotDePasse() + "]";
+	}
+
+
+
+    
 }
