@@ -46,6 +46,7 @@ import { ProfileClientComponent } from './components/client/profile-client/profi
 import { EditClientComponent } from './components/client/edit-client/edit-client.component';
 import { HomeTemplateComponent } from './components/home-template/home-template.component';
 import { HomeComponent } from './components/home-template/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { HomeComponent } from './components/home-template/home/home.component';
     ProfileClientComponent,
     EditClientComponent,
     HomeTemplateComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
