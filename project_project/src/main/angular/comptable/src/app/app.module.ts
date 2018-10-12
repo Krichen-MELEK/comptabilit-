@@ -45,7 +45,6 @@ import { ProfileClientComponent } from './components/client/profile-client/profi
 import { EditClientComponent } from './components/client/edit-client/edit-client.component';
 import { HomeTemplateComponent } from './components/home-template/home-template.component';
 import { HomeComponent } from './components/home-template/home/home.component';
-<<<<<<< HEAD
 import { PdfComponent } from './components/home-template/pdf/pdf.component';
 import { PdfDetailsComponent } from './components/home-template/pdf/pdf-details/pdf-details.component';
 import { DossierJuridiqueComponent } from './components/document/list-document/sous-list-document/dossier-juridique/dossier-juridique.component';
@@ -53,9 +52,7 @@ import { ViewDocumentComponent } from './components/document/view-document/view-
 import { SafePipe } from './services/safe-pipe.service';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { BilanMoisDetailsComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois-details/bilan-mois-details.component';
-=======
 import { LoginComponent } from './components/login/login.component';
->>>>>>> f9a007c654a6c4bb6f939aadacc3a3e7cdd6c087
 
 @NgModule({
   declarations: [
@@ -94,17 +91,14 @@ import { LoginComponent } from './components/login/login.component';
     EditClientComponent,
     HomeTemplateComponent,
     HomeComponent,
-<<<<<<< HEAD
     PdfComponent,
     PdfDetailsComponent,
     DossierJuridiqueComponent,
     ViewDocumentComponent,
     PdfViewerComponent,
-    BilanMoisDetailsComponent
-=======
+    BilanMoisDetailsComponent,
     LoginComponent
->>>>>>> f9a007c654a6c4bb6f939aadacc3a3e7cdd6c087
-  ],
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,

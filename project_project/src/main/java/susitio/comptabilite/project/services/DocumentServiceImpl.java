@@ -10,12 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import susitio.comptabilite.project.dao.DocumentRepository;
-import susitio.comptabilite.project.dao.NotificationRepository;
 import susitio.comptabilite.project.entities.Document;
-import susitio.comptabilite.project.entities.Notification;
 import susitio.comptabilite.project.entities.Personne;
 import susitio.comptabilite.project.enums.TypeFolder;
-import susitio.comptabilite.project.enums.TypeNotification;
 
 @Service
 public class DocumentServiceImpl implements DocumentService{
