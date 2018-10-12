@@ -24,6 +24,7 @@ export class DocumentService {
     formdata.append('file', file);
     formdata.append('type', value['type']);
     formdata.append('annee',value['annee']);
+    console.log(value['type']);
     const req = new HttpRequest('POST', '/api/client/upload', formdata, {
       reportProgress: true,
       responseType: 'text'
