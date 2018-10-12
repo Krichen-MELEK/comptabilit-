@@ -50,9 +50,20 @@ import { PdfDetailsComponent } from './components/home-template/pdf/pdf-details/
 import { DossierJuridiqueComponent } from './components/document/list-document/sous-list-document/dossier-juridique/dossier-juridique.component';
 import { ViewDocumentComponent } from './components/document/view-document/view-document.component';
 import { SafePipe } from './services/safe-pipe.service';
-import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { BilanMoisDetailsComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois-details/bilan-mois-details.component';
-import { LoginComponent } from './components/login/login.component';
+import { Page404Component } from './components/page404/page404.component';
+import { AboutComponent } from './components/home-template/about/about.component';
+import { AuditEtCertificationComponent } from './components/home-template/audit-et-certification/audit-et-certification.component';
+import { AssistanceJuridiqueComponent } from './components/home-template/assistance-juridique/assistance-juridique.component';
+import { ConseilEnManagementComponent } from './components/home-template/conseil-en-management/conseil-en-management.component';
+import { ServicesAuxEntrepreneursComponent } from './components/home-template/services-aux-entrepreneurs/services-aux-entrepreneurs.component';
+import { ConseilEnTransactionsComponent } from './components/home-template/conseil-en-transactions/conseil-en-transactions.component';
+import { ExpertiseComponent } from './components/home-template/expertise/expertise.component';
+import { CarriereComponent } from './components/home-template/carriere/carriere.component';
+import { ContactComponent } from './components/home-template/contact/contact.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { AddDocumentNewsComponent } from './components/document/add-document-news/add-document-news.component';
 
 @NgModule({
   declarations: [
@@ -95,17 +106,29 @@ import { LoginComponent } from './components/login/login.component';
     PdfDetailsComponent,
     DossierJuridiqueComponent,
     ViewDocumentComponent,
-    PdfViewerComponent,
     BilanMoisDetailsComponent,
-    LoginComponent
-   ],
+    Page404Component,
+    AboutComponent,
+    AuditEtCertificationComponent,
+    AssistanceJuridiqueComponent,
+    ConseilEnManagementComponent,
+    ServicesAuxEntrepreneursComponent,
+    ConseilEnTransactionsComponent,
+    ExpertiseComponent,
+    CarriereComponent,
+    ContactComponent,
+    AddDocumentNewsComponent,
+   
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     Nl2BrPipeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxEditorModule,
+    TooltipModule
   ],
   providers: [
     ClientService,

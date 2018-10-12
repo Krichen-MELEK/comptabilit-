@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentService } from '../../../services/document.service';
 
 @Component({
   selector: 'app-pdf',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PdfComponent implements OnInit {
 
-  constructor() { }
+  documents: Document[] ; 
+  constructor(private documentService: DocumentService) {
+    this.documentService.getDocumentNews("actualite").subscribe((result: any) => {
+      this.documents = result;
+      console.log(this.documents) ; 
+    }, error => console.error(error));
+   }
 
   ngOnInit() {
+    
   }
 
 }

@@ -49,7 +49,6 @@ public class MessageServiceImpl implements MessageService {
     public void addMessage(Message message) {
         Client client = clientService.getClientById(message.getPersonneEmetteur().getId()) ;
         String contenueNotification = message.getObject() ;
-        System.out.println(TypeNotification.message);
         Notification notification = new Notification(TypeNotification.message,contenueNotification,messageRepository.saveAndFlush(message).getId(),personneService.getPersonneById(1)) ;
         notificationService.addNotification(notification);
 

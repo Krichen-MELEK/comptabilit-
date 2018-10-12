@@ -1,6 +1,8 @@
 import { Client } from "./client.model";
 
 enum TypeFolder {
+	actualite,
+	convention,
 	dossierJuridique,
 	dossierAnnuel,
 	Janvier,
@@ -19,7 +21,7 @@ enum TypeFolder {
 export class Document {
 
     public id : number;
-	constructor (public name: string,public path:string ,public anneeDeCreation:string ,public type:TypeFolder,public personneRecepteurDocument: Client,public personneEmmeteurDocument: Client)
+	constructor (public name: string,public contenue:string,public path:string ,public anneeDeCreation:string ,public type:TypeFolder,public personneRecepteurDocument: Client,public personneEmmeteurDocument: Client)
 	{}
 
 }

@@ -31,8 +31,18 @@ public class ClientController {
 	}
     
     @PostMapping("/upload")
-	public void addDocument(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("annee") String annee) {
-    	documentService.uploadDocuments(file,type,annee,clientService.getClientById(1),clientService.getClientById(1));
+	public void addDocument(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
+    	documentService.uploadDocuments(file,type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1));
+
+	}
+	@PostMapping("/upload/News")
+	public void addDocumentNews(@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
+		documentService.uploadDocumentsNews(type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1));
+
+	}
+	@PostMapping("/upload/news/file")
+	public void addDocumentNewsFile(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
+		documentService.uploadDocumentsNewsFile(file,type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1));
 
 	}
 	@GetMapping("/document/dossierJuridique/{annee}/{id}")
@@ -54,5 +64,10 @@ public class ClientController {
 	public Document getDocument(@PathVariable final int id){
     	return documentService.getDocumentById(id) ;
 	}
-}   
+	@GetMapping("/document/news/{type}")
+	public List<Document> getDocumentNews(@PathVariable final  TypeFolder type){
+		return documentService.getDocumentNews(type) ;
+	}
+
+}
 

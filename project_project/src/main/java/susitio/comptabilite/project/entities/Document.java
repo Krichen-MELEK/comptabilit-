@@ -14,6 +14,8 @@ public class Document {
     private String name;
     private String path ;
     private String anneeDeCreation  ;
+	@Lob
+	private String contenue ;
 	@Enumerated(EnumType.STRING)
     private TypeFolder type ;
     @ManyToOne
@@ -45,7 +47,7 @@ public class Document {
 		this.personneRecepteurDocument = personneRecepteurDocument;
 	}
 
-	public Document(String name, String path, String anneeDeCreation, TypeFolder type,Personne personneEmmetteur, Personne personneRecepteur) {
+	public Document(String name, String path, String anneeDeCreation,String contenue, TypeFolder type,Personne personneEmmetteur, Personne personneRecepteur) {
 		super();
 		this.name = name;
 		this.path = path;
@@ -53,11 +55,18 @@ public class Document {
 		this.type = type;
 		this.personneEmmeteurDocument = personneEmmetteur ;
 		this.personneRecepteurDocument = personneRecepteur ;
+		this.contenue = contenue ;
 	}
 
 	public Document() {
     }
+	public String getContenue() {
+		return contenue;
+	}
 
+	public void setContenue(String contenue) {
+		this.contenue = contenue;
+	}
 	public Integer getId() {
 		return id;
 	}

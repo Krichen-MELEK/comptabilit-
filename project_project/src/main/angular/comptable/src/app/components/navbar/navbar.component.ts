@@ -9,12 +9,19 @@ import { Router } from '../../../../node_modules/@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  notificationsMessage: Notification[] ; 
   notifications: Notification[] ; 
   constructor(private router:Router,private notificationService: NotificationService) { 
-    this.notificationService.getNotificationMessageByidPersonne(1).subscribe((result: any[]) => {
-      this.notifications = result;
-      console.log(this.notifications) ;
-    }, error => console.error(error));
+    // setInterval(() => {
+    //   this.notificationService.getNotification(1,'document').subscribe((result: any[]) => {
+    //     this.notifications = result;
+    //   }, error => console.error(error));
+    //   this.notificationService.getNotification(1,'message').subscribe((result: any[]) => {
+    //     this.notificationsMessage = result;
+    //   }, error => console.error(error));
+    // }, 1000);
+
+    
   }
 
   ngOnInit() {

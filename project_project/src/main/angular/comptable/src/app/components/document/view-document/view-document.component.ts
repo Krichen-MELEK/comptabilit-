@@ -16,14 +16,14 @@ export class ViewDocumentComponent implements OnInit {
   document: Document ; 
   path: string ; 
 
-  constructor(private domSanitizer:DomSanitizer,private documentService: DocumentService,private route: ActivatedRoute,protected _sanitizer: DomSanitizer) { 
+  constructor(private documentService: DocumentService,private route: ActivatedRoute) { 
     this.route.params.subscribe( params => {
       this.id = params.id ;
     });
     this.documentService.getDocument(this.id).subscribe((result: any) => {
       this.document = result;
       console.log(this.document) ;  
-      this.path = '../../../assets/ProfilePictureStore/'; 
+      this.path = '../../../assets/ProfilePictureStore/';  
     }, error => console.error(error));
   }
    

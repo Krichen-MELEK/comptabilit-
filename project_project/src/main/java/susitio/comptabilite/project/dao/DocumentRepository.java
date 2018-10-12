@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface DocumentRepository extends JpaRepository<Document,Integer> {
     public List<Document> getDocumentByAnneeDeCreationAndPersonneEmmeteurDocumentAndType(String annee, Personne personne, TypeFolder type) ;
+    public List<Document> getDocumentByType(TypeFolder type) ;
 }

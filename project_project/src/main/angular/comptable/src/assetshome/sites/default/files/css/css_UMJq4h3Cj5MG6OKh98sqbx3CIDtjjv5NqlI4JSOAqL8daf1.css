@@ -20139,7 +20139,7 @@ body .theme-button-one:hover,
 .shop-details .review-tab .nav-tabs>li.active>a:hover,
 .shop-details .review-tab .nav-tabs>li.active>a:focus,
 .shop-details .related-product h4:before {
-    background: #11caff;
+    background: #2b2d46;
 }
 
 body .theme-button-one,
@@ -20361,6 +20361,7 @@ header .header-wrapper {
     padding: 45px 10px 25px 40px;
     border-bottom: 1px solid #fff;
     background: #f7f4f4;
+    height: 200px;
 }
 
 .our-service .single-service .image {
@@ -20861,9 +20862,7 @@ header .header-wrapper {
     color: #fff;
 }
 
-.details-page-overview {
-    padding-top: 60px;
-}
+
 
 .details-page-overview h2 {
     margin-bottom: 45px;
@@ -20871,7 +20870,7 @@ header .header-wrapper {
 }
 
 .details-page-overview p {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .details-page-overview h3 {
@@ -21922,10 +21921,7 @@ header .header-wrapper {
         margin-top: 30px ; 
     }
 
-    .theme-sidebar,
-    .shop-sidebar {
-        margin-top: 60px;
-    }
+   
 
     .consultation-help .consultation-form-wrapper {
         padding: 0;

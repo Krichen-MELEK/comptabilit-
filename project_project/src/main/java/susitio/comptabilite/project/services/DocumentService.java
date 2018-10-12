@@ -11,7 +11,11 @@ import susitio.comptabilite.project.enums.TypeFolder;
 public interface DocumentService {
     public List<Document> getDocuments() ;
     public List<Document> getDossier(String annee, Personne personne, TypeFolder type) ;
+    public List<Document> getDocumentNews(TypeFolder typeFolder) ;
     public Document getDocumentById(int Id) ;
     public void deleteDocument(int id) ;
-	public void uploadDocuments(MultipartFile file, TypeFolder type, String annee,Personne personneEmmetteur, Personne personneRecepteur);
+	public void uploadDocuments(MultipartFile file, TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur);
+    public void uploadDocumentsNews(TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur);
+    public void uploadDocumentsNewsFile(MultipartFile file, TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur);
+
 }

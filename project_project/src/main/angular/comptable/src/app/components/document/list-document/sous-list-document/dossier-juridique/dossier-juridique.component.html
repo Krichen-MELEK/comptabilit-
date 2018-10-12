@@ -7,17 +7,17 @@
           <div class="card-body">
               <div class="table-responsive">
                   <table class="table">
-                      <thead>
-                      
+                      <thead>   
+                            
                       </thead>
                       <tbody>
   
-                          <tr *ngFor="let document of documents">
+                          <tr *ngFor="let document of documents" id="{{document.id+'a'}}">
                               <td>{{document.name}}</td>
                            
                               <td>
-                                <button [routerLink]="['./../../document-view', document.id,document.name]" class="btn btn-success">Ouvrir</button>
-                                <button class="btn btn-danger  btn sweet-confirm">Supprimer</button>
+                                <button [routerLink]="['./../../document-view', document.id]" class="btn btn-success">Ouvrir</button>
+                                <button class="btn btn-danger  btn sweet-confirm" (click)="showMessage(document.id)">Supprimer</button>
                               </td>
                           </tr>
                       </tbody>

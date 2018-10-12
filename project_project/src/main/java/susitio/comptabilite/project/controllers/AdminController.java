@@ -1,5 +1,6 @@
 package susitio.comptabilite.project.controllers;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import susitio.comptabilite.project.dao.DocumentRepository;
 import susitio.comptabilite.project.entities.*;
 import susitio.comptabilite.project.enums.TypeNotification;
 import susitio.comptabilite.project.services.AdminService;
@@ -42,6 +44,9 @@ public class AdminController {
 
     @Autowired
     private PersonneService personneService ;
+
+    @Autowired
+    private DocumentRepository documentRepository ;
 
     @GetMapping({"/client/view/all"})
     public List<Client> getAllClient(){
@@ -133,15 +138,28 @@ public class AdminController {
     public void deleteNotification(@PathVariable final int id){
         notificationService.deleteNotification(id);
     }
-    @GetMapping({"/notification/message/{id}"})
-    public List<Notification> getNotificationMessageByIdPersonne(@PathVariable final int id){
+    @GetMapping({"/notification/{id}/{type}"})
+    public List<Notification> getNotification(@PathVariable final int id,@PathVariable final TypeNotification type){
         Personne personne = personneService.getPersonneById(id) ;
-        return notificationService.getNotificationByPersinneAndType(personne, TypeNotification.message) ;
+        return notificationService.getNotificationByPersinneAndType(personne,type) ;
     }
 
     @GetMapping({"/client/{id}"})
     public Client getPersonne(@PathVariable final int id){
         System.out.println(id);
         return clientService.getClientById(id) ;
+    }
+    @DeleteMapping({"/document/delete/{id}"})
+    public void deleteDocument(@PathVariable final int id){
+        Document document = documentRepository.getOne(id) ;
+        File file = new File("C:\\Users\\MJ_INFO\\IdeaProjects\\comptabilit-\\project_project\\src\\main\\angular\\comptable\\src\\assets\\ProfilePictureStore\\" + document.getName());
+
+        if(file.delete()){
+            System.out.println(file.getName() + " is deleted!");
+            documentRepository.delete(document);
+        }else{
+            System.out.println("Delete operation is failed.");
+        }
+
     }
 }

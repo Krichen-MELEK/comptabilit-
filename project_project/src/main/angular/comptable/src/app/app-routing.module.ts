@@ -1,4 +1,3 @@
-import { LoginComponent } from './components/login/login.component';
 import { EmailReadComponent } from './components/email/email-read/email-read.component';
 import { EmailInboxComponent } from './components/email/email-inbox/email-inbox.component';
 import { EmailComposeComponent } from './components/email/email-compose/email-compose.component';
@@ -26,6 +25,18 @@ import { ViewDocumentComponent } from './components/document/view-document/view-
 import { BilanAnnuelComponent } from './components/document/list-document/sous-list-document/bilan-annuel/bilan-annuel.component';
 import { BilanMoisComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois.component';
 import { BilanMoisDetailsComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois-details/bilan-mois-details.component';
+import { Page404Component } from './components/page404/page404.component';
+import { HomeComponent } from './components/home-template/home/home.component';
+import { AboutComponent } from './components/home-template/about/about.component';
+import { AuditEtCertificationComponent } from './components/home-template/audit-et-certification/audit-et-certification.component';
+import { AssistanceJuridiqueComponent } from './components/home-template/assistance-juridique/assistance-juridique.component';
+import { ConseilEnManagementComponent } from './components/home-template/conseil-en-management/conseil-en-management.component';
+import { ServicesAuxEntrepreneursComponent } from './components/home-template/services-aux-entrepreneurs/services-aux-entrepreneurs.component';
+import { ConseilEnTransactionsComponent } from './components/home-template/conseil-en-transactions/conseil-en-transactions.component';
+import { ExpertiseComponent } from './components/home-template/expertise/expertise.component';
+import { CarriereComponent } from './components/home-template/carriere/carriere.component';
+import { PdfComponent } from './components/home-template/pdf/pdf.component';
+import { AddDocumentNewsComponent } from './components/document/add-document-news/add-document-news.component';
 
 
 
@@ -38,7 +49,8 @@ const routes: Routes = [
     { path: 'email-compose', component: EmailComposeComponent},
     { path: 'email-inbox', component: EmailInboxComponent},
     { path: 'email-read', component: EmailReadComponent},
-    { path: 'document-add', component: AddDocumentAdminComponent}
+    { path: 'document-add', component: AddDocumentAdminComponent},
+    { path: 'document-add-news', component: AddDocumentNewsComponent}
     ] 
   },
   { path: 'client', component: ClientComponent,children:[
@@ -54,6 +66,7 @@ const routes: Routes = [
     {path: 'bilanAnnuel/:annee', component: BilanAnnuelComponent},
     {path: 'bilanMensuel/:annee', component: BilanMoisComponent},
     {path: 'bilanMensuelDetails/:annee/:mois', component: BilanMoisDetailsComponent}
+   
    ]
   },
   { path: 'collaborateur', component: CollaborateurComponent,children: [
@@ -67,11 +80,22 @@ const routes: Routes = [
     { path: 'document-add', component: AddDocumentAdminComponent}
    ]
   },
-  { path: 'home' , component: HomeTemplateComponent} , 
-  { path:'login' , component: LoginComponent},
+  { path: 'amc' , component: HomeTemplateComponent, children: [
+    { path:'home', component: HomeComponent},
+    { path:'about', component: AboutComponent},
+    { path:'audit-et-certification', component: AuditEtCertificationComponent},
+    { path:'assistance-juridique', component: AssistanceJuridiqueComponent},
+    { path:'conseil-en-management', component: ConseilEnManagementComponent},
+    { path:'services-aux-entrepreneurs', component: ServicesAuxEntrepreneursComponent},
+    { path:'conseil-en-transactions', component: ConseilEnTransactionsComponent},
+    {path: 'expertise', component: ExpertiseComponent},
+    {path: 'carriere', component: CarriereComponent},
+    {path: 'actualites', component: PdfComponent}
+
+  ]} , 
   { path: 'inscription', component:InscriptionComponent},
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
-  { path: '**', component: InscriptionComponent }
+  { path: '**', component: Page404Component }
 ];
 
 @NgModule({
