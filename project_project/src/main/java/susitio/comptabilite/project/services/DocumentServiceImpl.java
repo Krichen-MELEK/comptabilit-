@@ -51,7 +51,7 @@ public class DocumentServiceImpl implements DocumentService{
 
     @Override
     public void uploadDocuments(MultipartFile file , TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur) {
-        Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,contenue,type,personneEmmetteur,personneRecepteur);
+        Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,contenue,type,personneEmmetteur,personneRecepteur,"");
         String contenueNotification =  type.toString() ;
         Notification notification = new Notification(TypeNotification.document,contenueNotification,documentRepository.saveAndFlush(document).getId(),personneRecepteur) ;
         notificationService.addNotification(notification);
@@ -73,14 +73,14 @@ public class DocumentServiceImpl implements DocumentService{
         }
 
     }
-    public void uploadDocumentsNews( TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur) {
-        Document document = new Document("","",annee,contenue,type,personneEmmetteur,personneRecepteur);
+    public void uploadDocumentsNews( TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur,String nomNews) {
+        Document document = new Document("","",annee,contenue,type,personneEmmetteur,personneRecepteur,nomNews);
         documentRepository.save(document) ;
     }
 
     @Override
-    public void uploadDocumentsNewsFile(MultipartFile file , TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur) {
-        Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,contenue,type,personneEmmetteur,personneRecepteur);
+    public void uploadDocumentsNewsFile(MultipartFile file , TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur,String nomNews) {
+        Document document = new Document(file.getOriginalFilename(),rootLocation.toUri().toString(),annee,contenue,type,personneEmmetteur,personneRecepteur,nomNews);
         documentRepository.save(document) ;
         String message = "";
         try {

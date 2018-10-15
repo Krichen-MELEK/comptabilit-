@@ -17,7 +17,8 @@ export class AddDocumentNewsComponent implements OnInit {
   constructor(public documentService: DocumentService) { 
     this.documentForm = new FormGroup({
       contenue: new FormControl(),
-      type: new FormControl()
+      type: new FormControl(),
+      nom: new FormControl() 
     })
   }
 
@@ -35,9 +36,7 @@ export class AddDocumentNewsComponent implements OnInit {
  }
  upload({value,valid}) {
   if(!this.selectedFiles) {
-    console.log(value['contenue']) ; 
     this.documentService.addDocumentNewswithoutFile(value).subscribe((result: any) => {
-     console.log("super ! ") ; 
     }, error => console.error(error)) ;
   }else{
     Array.from(this.selectedFiles).forEach(currentFileUpload => { 

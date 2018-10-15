@@ -15,7 +15,7 @@ public interface DocumentService {
     public Document getDocumentById(int Id) ;
     public void deleteDocument(int id) ;
 	public void uploadDocuments(MultipartFile file, TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur);
-    public void uploadDocumentsNews(TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur);
-    public void uploadDocumentsNewsFile(MultipartFile file, TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur);
+    public void uploadDocumentsNews(TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur,String nomNews);
+    public void uploadDocumentsNewsFile(MultipartFile file, TypeFolder type, String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur,String nomNews);
 
 }

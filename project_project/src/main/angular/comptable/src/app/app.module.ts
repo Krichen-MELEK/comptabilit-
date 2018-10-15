@@ -45,8 +45,6 @@ import { ProfileClientComponent } from './components/client/profile-client/profi
 import { EditClientComponent } from './components/client/edit-client/edit-client.component';
 import { HomeTemplateComponent } from './components/home-template/home-template.component';
 import { HomeComponent } from './components/home-template/home/home.component';
-import { PdfComponent } from './components/home-template/pdf/pdf.component';
-import { PdfDetailsComponent } from './components/home-template/pdf/pdf-details/pdf-details.component';
 import { DossierJuridiqueComponent } from './components/document/list-document/sous-list-document/dossier-juridique/dossier-juridique.component';
 import { ViewDocumentComponent } from './components/document/view-document/view-document.component';
 import { SafePipe } from './services/safe-pipe.service';
@@ -64,6 +62,11 @@ import { ContactComponent } from './components/home-template/contact/contact.com
 import { NgxEditorModule } from 'ngx-editor';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AddDocumentNewsComponent } from './components/document/add-document-news/add-document-news.component';
+import { ListDocumentActualiteComponent } from './components/document/list-document-actualite/list-document-actualite.component';
+import { ListDocumentConventionComponent } from './components/document/list-document-convention/list-document-convention.component';
+import { ActualiteComponent } from './components/home-template/actualite/actualite.component';
+import { ConventionComponent } from './components/home-template/convention/convention.component';
+import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
 
 @NgModule({
   declarations: [
@@ -102,8 +105,6 @@ import { AddDocumentNewsComponent } from './components/document/add-document-new
     EditClientComponent,
     HomeTemplateComponent,
     HomeComponent,
-    PdfComponent,
-    PdfDetailsComponent,
     DossierJuridiqueComponent,
     ViewDocumentComponent,
     BilanMoisDetailsComponent,
@@ -118,6 +119,11 @@ import { AddDocumentNewsComponent } from './components/document/add-document-new
     CarriereComponent,
     ContactComponent,
     AddDocumentNewsComponent,
+    ListDocumentActualiteComponent,
+    ListDocumentConventionComponent,
+    ActualiteComponent,
+    ConventionComponent,
+    PdfDetailsComponent
    
   ],
   imports: [

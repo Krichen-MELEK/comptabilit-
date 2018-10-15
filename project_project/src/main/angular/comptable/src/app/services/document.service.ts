@@ -39,9 +39,10 @@ export class DocumentService {
     /* console.log(file); */
     formdata.append('file', file);
     formdata.append('type', value['type']);
+    formdata.append('nomNews', value['nom']);
     console.log(value['contenue']) ; 
     formdata.append('contenue',value['contenue']);
-    formdata.append('annee',"");
+    formdata.append('annee',""); 
     const req = new HttpRequest('POST', '/api/client/upload/news/file', formdata, {
       reportProgress: true,
       responseType: 'text'
@@ -53,6 +54,7 @@ export class DocumentService {
   addDocumentNewswithoutFile(value:any):Observable<HttpEvent<{}>>{
     const formdata: FormData = new FormData();
     formdata.append('type', value['type']);
+    formdata.append('nomNews', value['nom']);
     formdata.append('contenue',value['contenue']);
     formdata.append('annee',"");
     const req = new HttpRequest('POST', '/api/client/upload/News', formdata, {

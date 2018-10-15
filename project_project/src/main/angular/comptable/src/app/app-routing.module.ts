@@ -35,8 +35,11 @@ import { ServicesAuxEntrepreneursComponent } from './components/home-template/se
 import { ConseilEnTransactionsComponent } from './components/home-template/conseil-en-transactions/conseil-en-transactions.component';
 import { ExpertiseComponent } from './components/home-template/expertise/expertise.component';
 import { CarriereComponent } from './components/home-template/carriere/carriere.component';
-import { PdfComponent } from './components/home-template/pdf/pdf.component';
 import { AddDocumentNewsComponent } from './components/document/add-document-news/add-document-news.component';
+import { ListDocumentActualiteComponent } from './components/document/list-document-actualite/list-document-actualite.component';
+import { ListDocumentConventionComponent } from './components/document/list-document-convention/list-document-convention.component';
+import { ActualiteComponent } from './components/home-template/actualite/actualite.component';
+import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
 
 
 
@@ -50,7 +53,9 @@ const routes: Routes = [
     { path: 'email-inbox', component: EmailInboxComponent},
     { path: 'email-read', component: EmailReadComponent},
     { path: 'document-add', component: AddDocumentAdminComponent},
-    { path: 'document-add-news', component: AddDocumentNewsComponent}
+    { path: 'document-add-news', component: AddDocumentNewsComponent},
+    { path: 'document-actualite', component: ListDocumentActualiteComponent},
+    { path: 'document-convention', component: ListDocumentConventionComponent}
     ] 
   },
   { path: 'client', component: ClientComponent,children:[
@@ -88,9 +93,11 @@ const routes: Routes = [
     { path:'conseil-en-management', component: ConseilEnManagementComponent},
     { path:'services-aux-entrepreneurs', component: ServicesAuxEntrepreneursComponent},
     { path:'conseil-en-transactions', component: ConseilEnTransactionsComponent},
-    {path: 'expertise', component: ExpertiseComponent},
-    {path: 'carriere', component: CarriereComponent},
-    {path: 'actualites', component: PdfComponent}
+    { path: 'expertise', component: ExpertiseComponent},
+    { path: 'carriere', component: CarriereComponent},
+    { path: 'actualites', component: ActualiteComponent, children:[
+        { path:'view/:id', component: PdfDetailsComponent }
+    ]},
 
   ]} , 
   { path: 'inscription', component:InscriptionComponent},

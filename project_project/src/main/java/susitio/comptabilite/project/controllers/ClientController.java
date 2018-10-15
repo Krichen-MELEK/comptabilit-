@@ -36,13 +36,13 @@ public class ClientController {
 
 	}
 	@PostMapping("/upload/News")
-	public void addDocumentNews(@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
-		documentService.uploadDocumentsNews(type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1));
+	public void addDocumentNews(@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee,@RequestParam("nomNews") String nomNews) {
+		documentService.uploadDocumentsNews(type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1),nomNews);
 
 	}
 	@PostMapping("/upload/news/file")
-	public void addDocumentNewsFile(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
-		documentService.uploadDocumentsNewsFile(file,type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1));
+	public void addDocumentNewsFile(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee,@RequestParam("nomNews") String nomNews) {
+		documentService.uploadDocumentsNewsFile(file,type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1),nomNews);
 
 	}
 	@GetMapping("/document/dossierJuridique/{annee}/{id}")

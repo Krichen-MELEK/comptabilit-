@@ -12,6 +12,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
     private String name;
+    private String nomNews  ;
     private String path ;
     private String anneeDeCreation  ;
 	@Lob
@@ -47,7 +48,7 @@ public class Document {
 		this.personneRecepteurDocument = personneRecepteurDocument;
 	}
 
-	public Document(String name, String path, String anneeDeCreation,String contenue, TypeFolder type,Personne personneEmmetteur, Personne personneRecepteur) {
+	public Document(String name, String path, String anneeDeCreation,String contenue, TypeFolder type,Personne personneEmmetteur, Personne personneRecepteur,String nomNews) {
 		super();
 		this.name = name;
 		this.path = path;
@@ -56,6 +57,7 @@ public class Document {
 		this.personneEmmeteurDocument = personneEmmetteur ;
 		this.personneRecepteurDocument = personneRecepteur ;
 		this.contenue = contenue ;
+		this.nomNews = nomNews ;
 	}
 
 	public Document() {
@@ -99,8 +101,13 @@ public class Document {
 		this.type = type;
 	}
 
+	public String getNomNews() {
+		return nomNews;
+	}
 
-
+	public void setNomNews(String nomNews) {
+		this.nomNews = nomNews;
+	}
 
 	@Override
 	public String toString() {
