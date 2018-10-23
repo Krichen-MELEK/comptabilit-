@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Client } from '../../../models/client.model';
-import { FormGroup, FormControl, Validators } from '../../../../../node_modules/@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-client',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { DocumentService } from '../../../services/document.service';
-import { ActivatedRoute } from '../../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pdf-details',

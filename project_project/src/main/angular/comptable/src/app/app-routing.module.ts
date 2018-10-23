@@ -40,6 +40,7 @@ import { ListDocumentActualiteComponent } from './components/document/list-docum
 import { ListDocumentConventionComponent } from './components/document/list-document-convention/list-document-convention.component';
 import { ActualiteComponent } from './components/home-template/actualite/actualite.component';
 import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -100,6 +101,7 @@ const routes: Routes = [
     ]},
 
   ]} , 
+  { path: 'login', component:LoginComponent},
   { path: 'inscription', component:InscriptionComponent},
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: '**', component: Page404Component }

@@ -3,6 +3,7 @@ package susitio.comptabilite.project.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 
 import susitio.comptabilite.project.services.CustomTokenEnhancer;
 
+@Order(value=10)
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
@@ -36,6 +38,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		System.out.println("abc");
+
 		endpoints
     	.authenticationManager(authenticationManager)
     	.tokenStore(tokenStore)
@@ -51,12 +55,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     	.tokenKeyAccess("permitAll()")
 		.passwordEncoder(passwordEncoder());
 	}
+	
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("client")
 			   .authorizedGrantTypes("refresh_token","password")
-			   .authorities("CLIENT")
+			   .authorities("CLIENT","ADMIN","COLLABORATEUR")
 			   .scopes("read", "write", "trust")
                .resourceIds("oauth2-resource")
                .accessTokenValiditySeconds(5000)

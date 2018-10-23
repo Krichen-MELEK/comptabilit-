@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '../../../../../node_modules/@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { CollaborateurService } from '../../../services/collaborateur.service';
 
 @Component({

@@ -1,17 +1,18 @@
+import { ClientService } from './../../../services/client.service';
+import { NotificationService } from './../../../services/notification.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../../services/notification.service';
-import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-navbar-client',
+  templateUrl: './navbar-client.component.html',
+  styleUrls: ['./navbar-client.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarClientComponent implements OnInit {
 
   notificationsMessage: Notification[] ; 
   notifications: Notification[] ; 
-  constructor(private router:Router,private notificationService: NotificationService) { 
+  constructor(private router:Router,private notificationService: NotificationService,private clientService:ClientService) { 
     // setInterval(() => {
     //   this.notificationService.getNotification(1,'document').subscribe((result: any[]) => {
     //     this.notifications = result;
@@ -20,13 +21,8 @@ export class NavbarComponent implements OnInit {
     //     this.notificationsMessage = result;
     //   }, error => console.error(error));
     // }, 1000);
-
-    
   }
-
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
   redirect(idMessage:number,idNotification){
     this.notificationService.deleteNotification(idNotification).subscribe((result: any) => {
    console.log('notification vu') ; 

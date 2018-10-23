@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MessageService } from '../../../services/message.service';
-import { FormControl, FormGroup } from '../../../../../node_modules/@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Client } from '../../../models/client.model';
 import { ClientService } from '../../../services/client.service';
 import swal from 'sweetalert2' ; 

@@ -89,7 +89,6 @@
                                                     <small class="form-control-feedback"> </small>Entrez l'adresse de l'entreprise</div>
                                             </div>
                                         </div>
-                                    
                                     </div>
                                       <h3 class="box-title">Résponsable Info</h3>
                                       <hr class="m-t-0 m-b-40">
@@ -132,6 +131,31 @@
 
 
                                       </div>
+                                        <div class="row">
+                                        <div class="col-md-1"></div>
+                                            <div class=" col-md-10">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="inputGroupFileAddon01">Photo</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input id="file1"  type="file" class="custom-file-input" id="inputGroupFile01"  (change)="selectFile($event)" aria-describedby="inputGroupFileAddon01" accept="image/png, image/jpeg">
+                                                        <label class="custom-file-label" for="inputGroupFile01"><small class="form-control-feedback"> </small>Entrez la photo du Résponsable</label>
+                                                    </div>
+                                                    <br>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" [hidden]="!selectedFiles" *ngFor="let file of selectedFiles">
+                                                <div class="col-md-1"></div>
+                                                <div class=" col-md-10" >
+                                                    <h5>{{file['name']}}</h5>
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped active" role="progressbar" [ngStyle]="{width:file['progress']+'%'}">{{file['progress']}} %</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                       <!--/row-->
                                       <h3 class="box-title">Sécurité</h3>
                                       <hr class="m-t-0 m-b-40">

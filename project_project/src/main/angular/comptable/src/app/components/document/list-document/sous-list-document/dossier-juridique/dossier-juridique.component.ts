@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '../../../../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DocumentService } from '../../../../../services/document.service';
 import swal from 'sweetalert2';
 

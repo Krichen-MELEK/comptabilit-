@@ -1,9 +1,9 @@
 import { element } from 'protractor';
-import { Document } from './../../../models/document.model';
+import { Document } from '../../../models/document.model';
 import { DocumentService } from '../../../services/document.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpResponse, HttpEventType } from '../../../../../node_modules/@angular/common/http';
+import { HttpResponse, HttpEventType } from '@angular/common/http';
 
 
 @Component({

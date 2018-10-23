@@ -1,8 +1,8 @@
 
-import { Document } from './../models/document.model';
+import { Document } from '../models/document.model';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import {ResponseContentType } from '@angular/http';
 
 const httpOptions = {

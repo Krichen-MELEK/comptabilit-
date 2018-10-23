@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpEventType, HttpResponse } from '../../../../../node_modules/@angular/common/http';
-import { FormGroup, FormControl } from '../../../../../node_modules/@angular/forms';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { FormGroup, FormControl } from '@angular/forms';
 import { DocumentService } from '../../../services/document.service';
 
 @Component({
@@ -17,8 +17,7 @@ export class AddDocumentNewsComponent implements OnInit {
   constructor(public documentService: DocumentService) { 
     this.documentForm = new FormGroup({
       contenue: new FormControl(),
-      type: new FormControl(),
-      nom: new FormControl() 
+      type: new FormControl()
     })
   }
 
@@ -36,7 +35,9 @@ export class AddDocumentNewsComponent implements OnInit {
  }
  upload({value,valid}) {
   if(!this.selectedFiles) {
+    console.log(value['contenue']) ; 
     this.documentService.addDocumentNewswithoutFile(value).subscribe((result: any) => {
+     console.log("super ! ") ; 
     }, error => console.error(error)) ;
   }else{
     Array.from(this.selectedFiles).forEach(currentFileUpload => { 

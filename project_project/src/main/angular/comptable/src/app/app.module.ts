@@ -1,16 +1,17 @@
+
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { MessageService } from './services/message.service';
 import { ClientComponent } from './components/client/client.component';
 import { ClientService } from './services/client.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DocumentComponent } from './components/document/document.component';
 import { AddDocumentComponent } from './components/document/add-document/add-document.component';
 import { DocumentService } from './services/document.service';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListClientComponent } from './components/client/list-client/list-client.component';
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
 import { TemplateAdminComponent } from './components/admin/template-admin.component';
@@ -36,8 +37,8 @@ import { CollaborateurService } from './services/collaborateur.service';
 import { ListClientNonValideComponent } from './components/client/list-client-non-valide/list-client-non-valide.component';
 import { EmailComposeClientComponent } from './components/email/email-compose-client/email-compose-client.component';
 import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '../../node_modules/@angular/common';
-import { AppRoutingModule } from './/app-routing.module';
+import { APP_BASE_HREF } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
 import { ClientLeftSidebarComponent } from './components/client/client-left-sidebar/client-left-sidebar.component';
 import { ClientPageContentComponent } from './components/client/client-page-content/client-page-content.component';
 import {Nl2BrPipeModule} from 'nl2br-pipe';
@@ -67,6 +68,8 @@ import { ListDocumentConventionComponent } from './components/document/list-docu
 import { ActualiteComponent } from './components/home-template/actualite/actualite.component';
 import { ConventionComponent } from './components/home-template/convention/convention.component';
 import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
+import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
+import { NavbarClientComponent } from './components/client/navbar-client/navbar-client.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,6 @@ import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-
     ClientComponent,
     DocumentComponent,
     AddDocumentComponent,
-    NavbarComponent,
     ListClientComponent,
     LeftSidebarComponent,
     TemplateAdminComponent,
@@ -123,7 +125,10 @@ import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-
     ListDocumentConventionComponent,
     ActualiteComponent,
     ConventionComponent,
-    PdfDetailsComponent
+    PdfDetailsComponent,
+    LoginComponent,
+    NavbarAdminComponent,
+    NavbarClientComponent
    
   ],
   imports: [
@@ -140,7 +145,12 @@ import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-
     ClientService,
     DocumentService,
     CollaborateurService,
-    MessageService
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

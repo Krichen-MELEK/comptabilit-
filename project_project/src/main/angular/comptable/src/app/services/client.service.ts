@@ -1,6 +1,7 @@
+import { Observable } from 'rxjs';
 import { Client } from '../models/client.model';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 
 
 
@@ -13,12 +14,26 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
-  addClient(client) {
-    console.log(client);
-    return this.http.post<Client>('/api/client/add', client);
-  }
+  addClient(file: File, client): Observable<HttpEvent<{}>> {
 
-  getClient(id: number) {
+    const formdata: FormData = new FormData();
+    /* console.log(file); */
+    formdata.append('file', file);
+    formdata.append('client', client);
+    const req = new HttpRequest('POST', '/api/client/add', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    }
+    );
+    console.log(formdata);
+    return this.http.request(req);
+  }
+  getClient() {
+    console.log("i m here");
+    console.log(localStorage.getItem('role'));
+    return this.http.get('/api/client/get');
+}
+  getClientById(id: number) {
     return this.http.get<Client>('/api/admin/client/view/' + id);
   }
 

@@ -10,14 +10,10 @@ import { Client } from '../../../models/client.model';
 export class ProfileClientComponent implements OnInit {
  public id: number ; 
  public client: Client ; 
- 
+ // ijbed lem local storage !!
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
-    this.clientService.getClient(1).subscribe((result: any) => {
-      this.client = result;
-      console.log(this.client);
-    }, error => console.log('erreur'));
   }
 
 }

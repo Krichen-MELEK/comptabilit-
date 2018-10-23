@@ -1,17 +1,28 @@
 package susitio.comptabilite.project.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import susitio.comptabilite.project.entities.Client;
 import susitio.comptabilite.project.entities.Document;
 import susitio.comptabilite.project.enums.TypeFolder;
+import susitio.comptabilite.project.exceptions.BusinessException;
 import susitio.comptabilite.project.services.ClientService;
 import susitio.comptabilite.project.services.DocumentService;
+import susitio.comptabilite.project.services.PersonneService;
 
-import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/client")
 public class ClientController {
@@ -22,14 +33,19 @@ public class ClientController {
 	ClientService clientService;
 	@Autowired
 	DocumentService documentService;
+	@Autowired
+	PersonneService personneService;
 	
+	@GetMapping("/get")
+	public UserDetails getCurrentParent() throws BusinessException {
+		System.out.println("abcd");
+		return personneService.getLoggedInUser();
+	}    
     @PostMapping("/add")
 	public Client addClient(@RequestBody Client client) {
-    	System.out.println(client);
 		clientService.addClient(client);
 		return client;
 	}
-    
     @PostMapping("/upload")
 	public void addDocument(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
     	documentService.uploadDocuments(file,type,annee,contenue,clientService.getClientById(1),clientService.getClientById(1));
