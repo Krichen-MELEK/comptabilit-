@@ -16,7 +16,7 @@ export class BilanMoisDetailsComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.annee = params.annee ;
       this.mois = params.mois ;
-      this.documentService.getBilanMensuel(this.annee,this.mois,1).subscribe((result: any) => {
+      this.documentService.getBilanMensuel(this.annee,this.mois).subscribe((result: any) => {
         this.documents = result;
         console.log(this.documents) ; 
       }, error => console.error(error));

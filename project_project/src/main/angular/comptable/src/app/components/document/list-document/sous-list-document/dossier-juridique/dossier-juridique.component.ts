@@ -15,7 +15,7 @@ export class DossierJuridiqueComponent implements OnInit {
   constructor(private documentService: DocumentService,private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
       this.annee = params.annee ;
-      this.documentService.getDossierJuridique(this.annee,1).subscribe((result: any) => {
+      this.documentService.getDossierJuridique(this.annee).subscribe((result: any) => {
         this.documents = result;
         console.log(this.documents) ; 
       }, error => console.error(error));

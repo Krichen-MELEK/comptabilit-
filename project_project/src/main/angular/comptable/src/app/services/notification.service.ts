@@ -13,13 +13,13 @@ export class NotificationService {
 
   constructor(private http: HttpClient,public clientService: ClientService) { }
 
-  getNotification(id:number,type: String){
-    return this.http.get('/api/admin/notification/'+id+'/'+type) ; 
+  getNotification(type: String){
+    return this.http.get('/api/client/notification/'+type) ; 
   }
   vuNotification(id: number){
-    return this.http.get('api/admin/notification/vu/'+id) ; 
+    return this.http.get('api/client/notification/vu/'+id) ; 
   }
   deleteNotification(id: number){
-    return this.http.get('api/admin/notification/delete/'+id) ; 
+    return this.http.get('api/client/notification/delete/'+id) ; 
   }
 }

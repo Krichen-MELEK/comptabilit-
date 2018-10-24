@@ -16,19 +16,19 @@ export class MessageService {
   constructor(private http: HttpClient,public clientService: ClientService) { }
 
   addMessage(message: Message){
-    return this.http.post<Message>('/api/admin/message/create/1/2', message);
+    return this.http.post<Message>('/api/client/message/create', message);
   }
 
-  getMessageByClient(id:number){
-    return this.http.get('/api/admin/message/reception/view/all/'+id) ; 
+  getMessageByClient(){
+    return this.http.get('/api/client/message/reception/view/all') ; 
   }
 
   getMessageById(id:number){
-    return this.http.get<Message>('/api/admin/message/view/'+id);
+    return this.http.get<Message>('/api/client/message/view/'+id);
   }
 
   MessageLu(id: number){
-    return this.http.get('/api/admin/message/lu/'+id) ; 
+    return this.http.get('/api/client/message/lu/'+id) ; 
   }
 
 }

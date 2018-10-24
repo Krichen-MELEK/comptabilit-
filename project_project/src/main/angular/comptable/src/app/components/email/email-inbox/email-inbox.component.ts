@@ -13,7 +13,7 @@ export class EmailInboxComponent implements OnInit {
   constructor(public messageService: MessageService) { }
 
   ngOnInit() {
-    this.messageService.getMessageByClient(2).subscribe((result: any[]) => {
+    this.messageService.getMessageByClient().subscribe((result: any[]) => {
       this.messages = result;
       console.log(this.messages) ; 
     }, error => console.error(error));

@@ -14,4 +14,6 @@ public interface DossierAnnuelService {
     public DossierAnnuel getDossierAnnuelById(int id) ;
     public void addDossierAnnuel(DossierAnnuel dossierAnnuel) ;
     public void deleteDossierAnnuel(int id) ;
+    public void closeYear(int id) ;
+    public void openYear(int id) ;
 }

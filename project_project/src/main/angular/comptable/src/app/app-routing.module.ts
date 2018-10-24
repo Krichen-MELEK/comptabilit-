@@ -40,6 +40,7 @@ import { ListDocumentActualiteComponent } from './components/document/list-docum
 import { ListDocumentConventionComponent } from './components/document/list-document-convention/list-document-convention.component';
 import { ActualiteComponent } from './components/home-template/actualite/actualite.component';
 import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
+import { ConventionComponent } from './components/home-template/convention/convention.component';
 import { LoginComponent } from './components/login/login.component';
 
 
@@ -97,13 +98,14 @@ const routes: Routes = [
     { path: 'expertise', component: ExpertiseComponent},
     { path: 'carriere', component: CarriereComponent},
     { path: 'actualites', component: ActualiteComponent, children:[
-        { path:'view/:id', component: PdfDetailsComponent }
+    { path:'view/:id', component: PdfDetailsComponent }
     ]},
-
+    { path: 'conventions', component: ConventionComponent, children:[
+      { path:'view/:id', component: PdfDetailsComponent }
+  ]},
   ]} , 
   { path: 'login', component:LoginComponent},
   { path: 'inscription', component:InscriptionComponent},
-  { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: '**', component: Page404Component }
 ];
 

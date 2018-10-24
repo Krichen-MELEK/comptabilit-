@@ -11,4 +11,6 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client,Integer> {
 
     public List<Client> findClientByValidation(Boolean valide) ;
+
+    public  Client getClientByEmail(String email) ;
 }

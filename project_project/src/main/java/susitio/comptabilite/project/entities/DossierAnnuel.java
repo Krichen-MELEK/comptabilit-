@@ -19,8 +19,8 @@ public class DossierAnnuel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
-    private String nom ;
-    private String annee ;
+    private boolean status ;
+    private int annee ;
     @ManyToOne
     private Client client ;
 
@@ -28,8 +28,40 @@ public class DossierAnnuel {
 
     }
 
-    public DossierAnnuel(String nom, String annee, Client client) {
-        this.nom = nom;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public DossierAnnuel(boolean status, int annee, Client client) {
+        this.status = status;
         this.annee = annee;
         this.client = client;
     }

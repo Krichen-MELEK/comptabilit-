@@ -43,8 +43,8 @@ export class InscriptionComponent implements OnInit {
   }  
   onSubmit({value,valid}){
     console.log(value);
-    // this.clientService.addClient(value).subscribe(data =>{
-    //   console.log("goo");
-    // },error=> console.error(error));
+    this.clientService.addClient(value).subscribe(data =>{
+      console.log("goo");
+    },error=> console.error(error));
   }
 }

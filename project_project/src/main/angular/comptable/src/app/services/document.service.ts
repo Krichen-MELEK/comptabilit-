@@ -1,9 +1,9 @@
-
-import { Document } from '../models/document.model';
+import { Document } from './../models/document.model';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from '../../../node_modules/rxjs';
 import {ResponseContentType } from '@angular/http';
+import { Annee } from '../models/annee';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -43,7 +43,7 @@ export class DocumentService {
     console.log(value['contenue']) ; 
     formdata.append('contenue',value['contenue']);
     formdata.append('annee',""); 
-    const req = new HttpRequest('POST', '/api/client/upload/news/file', formdata, {
+    const req = new HttpRequest('POST', '/api/admin/upload/news/file', formdata, {
       reportProgress: true,
       responseType: 'text'
     }
@@ -57,7 +57,7 @@ export class DocumentService {
     formdata.append('nomNews', value['nom']);
     formdata.append('contenue',value['contenue']);
     formdata.append('annee',"");
-    const req = new HttpRequest('POST', '/api/client/upload/News', formdata, {
+    const req = new HttpRequest('POST', '/api/admin/upload/News', formdata, {
       reportProgress: true,
       responseType: 'text'
     }
@@ -70,18 +70,27 @@ export class DocumentService {
     return this.http.get<Document>('/api/client/document/' + id);
   }
   getDocumentNews(type:String){
-    return this.http.get<Document>('/api/client/document/news/' + type) ; 
+    return this.http.get<Document>('/api/admin/document/news/' + type) ; 
   }
-  getDossierJuridique(annee:number,id: number){
-    return this.http.get<Document>('/api/client/document/dossierJuridique/'+annee+'/'+id) ; 
+  getDossierJuridique(annee:number){
+    return this.http.get<Document>('/api/client/document/dossierJuridique/'+annee) ; 
   }
- getBilanAnnuel(annee:number,id: number){
-  return this.http.get<Document>('/api/client/document/bilanAnnuel/'+annee+'/'+id) ;
+ getBilanAnnuel(annee:number){
+  return this.http.get<Document>('/api/client/document/bilanAnnuel/'+annee) ;
  }
- getBilanMensuel(annee:number,mois: String,id: number){
-  return this.http.get<Document>('/api/client/document/bilanMensuel/'+annee+'/'+mois+'/'+id) ;
+ getBilanMensuel(annee:number,mois: String){
+  return this.http.get<Document>('/api/client/document/bilanMensuel/'+annee+'/'+mois) ;
+ }
+ getAllAnnee(){
+   return this.http.get<Annee>('/api/client/document/annee') ; 
  }
  deleteDocument(id:number){
    return this.http.delete('/api/admin/document/delete/'+id) ; 
+ }
+ openYear(id:number){
+   return this.http.get('/api/client/document/annee/activer/'+id)
+ }
+ closeYear(id:number){
+   return this.http.get('/api/client/document/annee/cloturer/'+id)
  }
 }

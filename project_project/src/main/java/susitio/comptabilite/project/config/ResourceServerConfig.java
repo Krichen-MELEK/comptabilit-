@@ -45,7 +45,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http
         .authorizeRequests()
-        .antMatchers("api/oauth/**","api/login","api/","/api/logout","api/inscription").permitAll()
+        .antMatchers("api/oauth/**","api/login","api/","/api/logout","api/inscription","/api/client/add").permitAll()
 		.antMatchers("/api/admin/**").hasAuthority("ADMIN")
 		.antMatchers("/api/client/**").hasAuthority("CLIENT")
 		.antMatchers("/api/Collaborateur/**").hasAnyAuthority("COLLABORATEUR,ADMIN");

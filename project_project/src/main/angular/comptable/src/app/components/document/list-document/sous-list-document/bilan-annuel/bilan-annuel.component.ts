@@ -14,7 +14,7 @@ export class BilanAnnuelComponent implements OnInit {
   constructor(private documentService: DocumentService,private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
       this.annee = params.annee ;
-      this.documentService.getBilanAnnuel(this.annee,1).subscribe((result: any) => {
+      this.documentService.getBilanAnnuel(this.annee).subscribe((result: any) => {
         this.documents = result;
         console.log(this.documents) ; 
       }, error => console.error(error));

@@ -13,7 +13,6 @@ export class HomeTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.step = 'home' ; 
- 
   }
  
   

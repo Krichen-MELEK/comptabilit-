@@ -16,7 +16,7 @@ export class InscriptionComponent implements OnInit {
     this.clientForm = new FormGroup({
     nom: new FormControl(),
     prenom: new FormControl(),
-    email: new FormControl(),
+    email: new FormControl(), 
     motDePasse: new FormControl(),
     telephone:new FormControl(),
     nomSociete: new FormControl(),
