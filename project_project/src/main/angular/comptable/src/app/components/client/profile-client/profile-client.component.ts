@@ -8,9 +8,7 @@ import { Client } from '../../../models/client.model';
   styleUrls: ['./profile-client.component.css']
 })
 export class ProfileClientComponent implements OnInit {
- public id: number ; 
- public client: Client ; 
- // ijbed lem local storage !!
+
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {

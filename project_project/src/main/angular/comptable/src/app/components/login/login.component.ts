@@ -16,18 +16,18 @@ export class LoginComponent implements OnInit {
   isAuthenticated = () => this.loginService.isAuthenticated();
 
   constructor(private loginService: LoginService, private router: Router) {
-    console.log(localStorage.getItem('refresh_token') !== null);
-    if (localStorage.getItem('refresh_token')) {
-      if (!this.loginService.isAuthenticated()) {// check whether the user's access token is expired or not
-        console.log('going to refresh token');
-        this.isDataLoaded = false;
-        this.loginService.refreshToken().subscribe(result => {
-          this.loginService.storeTokenInfo(result['access_token'], result['expires_in']);
-          this.isAuthenticated();
-          this.isDataLoaded = true;
-        }, err => console.error('error from refreshToken(): ', err));
-      }
-    }
+    // console.log(localStorage.getItem('refresh_token') !== null);
+    // if (localStorage.getItem('refresh_token')) {
+    //   if (!this.loginService.isAuthenticated()) {// check whether the user's access token is expired or not
+    //     console.log('going to refresh token');
+    //     this.isDataLoaded = false;
+    //     this.loginService.refreshToken().subscribe(result => {
+    //       this.loginService.storeTokenInfo(result['access_token'], result['expires_in']);
+    //       this.isAuthenticated();
+    //       this.isDataLoaded = true;
+    //     }, err => console.error('error from refreshToken(): ', err));
+    //   }
+    // }
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginService.logout();
   }
 
   onSubmit({ value, Valid }) {

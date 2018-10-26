@@ -13,7 +13,6 @@ export class AuthInterceptorService implements HttpInterceptor {
     const tokenExpirationDate = parseInt(localStorage.getItem('expires_in'), 10);
 
     if (accessToken && this.loginService.isAuthenticated() && req.url != "/api/oauth/token") {
- 
       let newReq = req.clone({
         setHeaders: {
           Authorization: 'Bearer ' + accessToken
@@ -40,7 +39,9 @@ export class AuthInterceptorService implements HttpInterceptor {
             }
             if (error.status === 401) { // token expired
               if (!this.loginService.isAuthenticated() && accessToken) {
-                this.loginService.refreshToken();
+                this.loginService.refreshToken().subscribe(data =>{
+                  console.log(data);
+                });
                 accessToken = localStorage.getItem('access_token');
                 newReq = req.clone({
                   setHeaders: {

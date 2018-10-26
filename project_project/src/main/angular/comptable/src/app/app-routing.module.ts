@@ -1,13 +1,10 @@
 import { EmailReadComponent } from './components/email/email-read/email-read.component';
 import { EmailInboxComponent } from './components/email/email-inbox/email-inbox.component';
 import { EmailComposeComponent } from './components/email/email-compose/email-compose.component';
-import { AddDocumentComponent } from './components/document/add-document/add-document.component';
 import { ListClientNonValideComponent } from './components/client/list-client-non-valide/list-client-non-valide.component';
-import { AddDocumentAdminComponent } from './components/document/add-document-admin/add-document-admin.component';
 import { ProfileCollaborateurComponent } from './components/collaborateur/profile-collaborateur/profile-collaborateur.component';
 import { AddCollaborateurComponent } from './components/collaborateur/add-collaborateur/add-collaborateur.component';
 import { ListCollaborateurComponent } from './components/collaborateur/list-collaborateur/list-collaborateur.component';
-import { ListClientComponent } from './components/client/list-client/list-client.component';
 import { InscriptionComponent } from './components/client/inscription/inscription.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
@@ -42,6 +39,11 @@ import { ActualiteComponent } from './components/home-template/actualite/actuali
 import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
 import { ConventionComponent } from './components/home-template/convention/convention.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddDocumentComponent } from './components/client/add-document/add-document.component';
+import { AddDocumentAdminComponent } from './components/admin/add-document-admin/add-document-admin.component';
+import { ListClientComponent } from './components/admin/list-client/list-client.component';
+import { ProfilClientAdminComponent } from './components/admin/profil-client-admin/profil-client-admin.component';
+import { ListDocumentClientComponent } from './components/admin/list-document-client/list-document-client.component';
 
 
 
@@ -57,7 +59,15 @@ const routes: Routes = [
     { path: 'document-add', component: AddDocumentAdminComponent},
     { path: 'document-add-news', component: AddDocumentNewsComponent},
     { path: 'document-actualite', component: ListDocumentActualiteComponent},
-    { path: 'document-convention', component: ListDocumentConventionComponent}
+    { path: 'document-convention', component: ListDocumentConventionComponent},
+    { path: 'profil-client/:id', component: ProfilClientAdminComponent},
+    { path: 'list-document-client/:id', component: ListDocumentClientComponent},
+    {path: 'sous-document/:annee', component: SousListDocumentComponent},
+    {path: 'dossierJuridique/:annee', component: DossierJuridiqueComponent},
+    {path: 'document-view/:id', component: ViewDocumentComponent},
+    {path: 'bilanAnnuel/:annee', component: BilanAnnuelComponent},
+    {path: 'bilanMensuel/:annee', component: BilanMoisComponent},
+    {path: 'bilanMensuelDetails/:annee/:mois', component: BilanMoisDetailsComponent}
     ] 
   },
   { path: 'client', component: ClientComponent,children:[

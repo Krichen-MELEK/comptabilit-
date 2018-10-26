@@ -23,7 +23,7 @@
                                 <td>{{client.telSociete}}</td>
                                 <td>{{client.emailSociete}}</td>
                                 <td>
-                                  <button class="btn btn-success">Profile</button>
+                                  <button [routerLink]="['../profil-client',client.id]" class="btn btn-success">Profile</button>
                                   <button class="btn btn-grean btn-success btn sweet-success"  (click)="showMessageSucess(client.id+'a',client.id)">Approuver</button>
                                 </td>
                             </tr>

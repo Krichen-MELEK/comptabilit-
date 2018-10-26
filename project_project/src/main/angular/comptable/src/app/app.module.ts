@@ -10,9 +10,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DocumentComponent } from './components/document/document.component';
-import { AddDocumentComponent } from './components/document/add-document/add-document.component';
 import { DocumentService } from './services/document.service';
-import { ListClientComponent } from './components/client/list-client/list-client.component';
 import { LeftSidebarComponent } from './components/left-sidebar/left-sidebar.component';
 import { TemplateAdminComponent } from './components/admin/template-admin.component';
 import { AdminLeftSidebarComponent } from './components/admin/admin-left-sidebar/admin-left-sidebar.component';
@@ -30,7 +28,6 @@ import { ListDocumentComponent } from './components/document/list-document/list-
 import { BilanAnnuelComponent } from './components/document/list-document/sous-list-document/bilan-annuel/bilan-annuel.component';
 import { BilanMoisComponent } from './components/document/list-document/sous-list-document/bilan-mois/bilan-mois.component';
 import { SousListDocumentComponent } from './components/document/list-document/sous-list-document/sous-list-document.component';
-import { AddDocumentAdminComponent } from './components/document/add-document-admin/add-document-admin.component';
 import { InscriptionComponent } from './components/client/inscription/inscription.component';
 import { AddCollaborateurComponent } from './components/collaborateur/add-collaborateur/add-collaborateur.component';
 import { CollaborateurService } from './services/collaborateur.service';
@@ -70,6 +67,11 @@ import { ConventionComponent } from './components/home-template/convention/conve
 import { PdfDetailsComponent } from './components/home-template/pdf-details/pdf-details.component';
 import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
 import { NavbarClientComponent } from './components/client/navbar-client/navbar-client.component';
+import { AddDocumentAdminComponent } from './components/admin/add-document-admin/add-document-admin.component';
+import { AddDocumentComponent } from './components/client/add-document/add-document.component';
+import { ProfilClientAdminComponent } from './components/admin/profil-client-admin/profil-client-admin.component';
+import { ListClientComponent } from './components/admin/list-client/list-client.component';
+import { ListDocumentClientComponent } from './components/admin/list-document-client/list-document-client.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +130,9 @@ import { NavbarClientComponent } from './components/client/navbar-client/navbar-
     PdfDetailsComponent,
     LoginComponent,
     NavbarAdminComponent,
-    NavbarClientComponent
+    NavbarClientComponent,
+    ProfilClientAdminComponent,
+    ListDocumentClientComponent
    
   ],
   imports: [
