@@ -45,7 +45,14 @@ public class AdminController {
     @Autowired
     DossierAnnuelService dossierAnnuelService ;
 
-    @GetMapping({"/client/view/all"})
+    @PostMapping("/upload")
+    public void addDocument(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee, @RequestParam("id") int id) {
+        System.out.println(id);
+        documentService.uploadDocuments(file,type,annee,contenue,personneService.getPersonneById(1),clientService.getClientById(id));
+
+    }
+
+    @GetMapping({"/getAllClient"})
     public List<Client> getAllClient(){
         return clientService.getClients() ;
     }
@@ -167,12 +174,8 @@ public class AdminController {
 
     @GetMapping("/document/annee/{id}")
     public List<DossierAnnuel> getAlLDossier(@PathVariable final int id){
-        try {
-            return dossierAnnuelService.getDossierAnnuelByClient(clientService.getLoggedInClient()) ;
-        } catch (BusinessException e) {
-            e.printStackTrace();
-        }
-        return null ;
+        System.out.println(dossierAnnuelService.getDossierAnnuelByClient(clientService.getClientById(id)));
+        return dossierAnnuelService.getDossierAnnuelByClient(clientService.getClientById(id)) ;
     }
 
     @GetMapping("/document/annee/cloturer/{id}")

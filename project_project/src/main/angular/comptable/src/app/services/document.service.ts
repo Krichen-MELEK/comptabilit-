@@ -1,7 +1,7 @@
 import { Document } from './../models/document.model';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable, observable } from '../../../node_modules/rxjs';
 import {ResponseContentType } from '@angular/http';
 import { Annee } from '../models/annee';
 
@@ -32,6 +32,22 @@ export class DocumentService {
     }
     );
     console.log(formdata);
+    return this.http.request(req);
+  }
+  addAdminDocument(file: File, value: any): Observable<HttpEvent<{}>> {
+    console.log(value);
+    const formdata: FormData = new FormData();
+    /* console.log(file); */
+    formdata.append('file', file);
+    formdata.append('type', value['type']);
+    formdata.append('annee',value['annee']);
+    formdata.append('id',value['destination']);
+    formdata.append('contenue',"");
+    const req = new HttpRequest('POST', '/api/admin/upload', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    }
+    );
     return this.http.request(req);
   }
   addDocumentNewswithFile(file: File, value:any):Observable<HttpEvent<{}>>{
@@ -84,13 +100,16 @@ export class DocumentService {
  getAllAnnee(){
    return this.http.get<Annee>('/api/client/document/annee') ; 
  }
+ getAllAnneeClient(id:number){
+  return this.http.get<Observable<Annee>>('/api/admin/document/annee/'+id) ; 
+}
  deleteDocument(id:number){
    return this.http.delete('/api/admin/document/delete/'+id) ; 
  }
  openYear(id:number){
-   return this.http.get('/api/client/document/annee/activer/'+id)
+   return this.http.get('/api/admin/document/annee/activer/'+id)
  }
  closeYear(id:number){
-   return this.http.get('/api/client/document/annee/cloturer/'+id)
+   return this.http.get('/api/admin/document/annee/cloturer/'+id)
  }
 }

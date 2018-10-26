@@ -26,7 +26,9 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/sweetalert2/dist/sweetalert2.css"
+              "node_modules/sweetalert2/dist/sweetalert2.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
             ],
             "scripts": [
               "src/assets/js/lib/sweetalert/sweetalert.min.js",

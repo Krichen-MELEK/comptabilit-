@@ -32,6 +32,5 @@ export class NavbarClientComponent implements OnInit {
   }
   logout(){
     this.loginService.logout();
-
   }
 }

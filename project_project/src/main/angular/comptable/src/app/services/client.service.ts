@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { Client } from '../models/client.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
@@ -42,7 +42,7 @@ export class ClientService {
     return this.http.get('/api/admin/client/validation/' + valide) ; 
   }
   getAllClients(){
-    return this.http.get("/api/admin/getAll");
+    return this.http.get<Observable<Client>>("/api/admin/getAllClient");
   }
   deleteClient(id:number){
     return this.http.delete("/api/admin/client/delete/"+id) ; 
