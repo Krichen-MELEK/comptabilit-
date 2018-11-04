@@ -81,7 +81,9 @@ export class DocumentService {
     console.log(formdata);
     return this.http.request(req);
   }
-
+  getFolder(id:number, annee:Annee, folder : string){
+    return this.http.get<Observable<Document>>('api/admin/document/'+folder+'/'+annee+'/'+id);
+  }
   getDocument(id: number) {
     return this.http.get<Document>('/api/client/document/' + id);
   }

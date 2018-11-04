@@ -64,9 +64,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			   .authorities("CLIENT","ADMIN","COLLABORATEUR")
 			   .scopes("read", "write", "trust")
                .resourceIds("oauth2-resource")
-               .accessTokenValiditySeconds(5000)
+               .accessTokenValiditySeconds(10)
                .secret(encoder.encode("secret"))
-               .refreshTokenValiditySeconds(50000);
+               .refreshTokenValiditySeconds(60);
 	}
 
     @Bean

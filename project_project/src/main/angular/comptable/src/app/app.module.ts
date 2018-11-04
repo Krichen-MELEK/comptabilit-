@@ -5,7 +5,7 @@ import { MessageService } from './services/message.service';
 import { ClientComponent } from './components/client/client.component';
 import { ClientService } from './services/client.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule, Component, ChangeDetectorRef } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -72,6 +72,10 @@ import { AddDocumentComponent } from './components/client/add-document/add-docum
 import { ProfilClientAdminComponent } from './components/admin/profil-client-admin/profil-client-admin.component';
 import { ListClientComponent } from './components/admin/list-client/list-client.component';
 import { ListDocumentClientComponent } from './components/admin/list-document-client/list-document-client.component';
+import { BigFolderComponent } from './components/admin/list-document-client/big-folder/big-folder.component';
+import { MensuelFolderComponent } from './components/admin/list-document-client/mensuel-folder/mensuel-folder.component';
+import { DetailDocumentComponent } from './components/admin/list-document-client/detail-document/detail-document.component';
+import { FolderDetailComponent } from './components/admin/list-document-client/folder-detail/folder-detail.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +136,11 @@ import { ListDocumentClientComponent } from './components/admin/list-document-cl
     NavbarAdminComponent,
     NavbarClientComponent,
     ProfilClientAdminComponent,
-    ListDocumentClientComponent
+    ListDocumentClientComponent,
+    BigFolderComponent,
+    MensuelFolderComponent,
+    DetailDocumentComponent,
+    FolderDetailComponent
    
   ],
   imports: [

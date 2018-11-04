@@ -4,15 +4,31 @@ import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
 import susitio.comptabilite.project.dao.DocumentRepository;
-import susitio.comptabilite.project.entities.*;
+import susitio.comptabilite.project.entities.Client;
+import susitio.comptabilite.project.entities.Collaborateur;
+import susitio.comptabilite.project.entities.Document;
+import susitio.comptabilite.project.entities.DossierAnnuel;
 import susitio.comptabilite.project.enums.TypeFolder;
-import susitio.comptabilite.project.enums.TypeNotification;
-import susitio.comptabilite.project.exceptions.BusinessException;
-import susitio.comptabilite.project.services.*;
+import susitio.comptabilite.project.services.AdminService;
+import susitio.comptabilite.project.services.ClientService;
+import susitio.comptabilite.project.services.CollaborateurService;
+import susitio.comptabilite.project.services.DocumentService;
+import susitio.comptabilite.project.services.DossierAnnuelService;
+import susitio.comptabilite.project.services.MessageService;
+import susitio.comptabilite.project.services.NotificationService;
+import susitio.comptabilite.project.services.PersonneService;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -140,7 +156,7 @@ public class AdminController {
         return documentService.getDocumentNews(type) ;
     }
 
-    @GetMapping("/document/dossierJuridique/{annee}/{id}")
+    /*@GetMapping("/document/dossierJuridique/{annee}/{id}")
     public List<Document> getDossierJuridique(@PathVariable final String annee, @PathVariable final  int id){
         Client client = null;
         try {
@@ -171,7 +187,12 @@ public class AdminController {
         }
         return documentService.getDossier(annee,client,mois) ;
     }
-
+*/
+    @GetMapping("/document/{folder}/{annee}/{id}")
+    public List<Document> getFolder(@PathVariable final TypeFolder folder, @PathVariable final String annee, @PathVariable final int id){
+    	System.out.println("****"+folder+"****");
+    	return documentService.getDossier(annee,clientService.getClientById(id),folder);
+    }
     @GetMapping("/document/annee/{id}")
     public List<DossierAnnuel> getAlLDossier(@PathVariable final int id){
         System.out.println(dossierAnnuelService.getDossierAnnuelByClient(clientService.getClientById(id)));

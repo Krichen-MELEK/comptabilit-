@@ -19,7 +19,7 @@
                                 <td *ngIf="annee.status; else closed">En cours</td>
                                 <ng-template #closed><td>Cloturée</td></ng-template>
                                 <td>
-                                  <button [routerLink]="['../../sous-document', annee.annee]" class="btn btn-success">Ouvrir</button>
+                                  <button [routerLink]="['../../anneeFolder',id,annee.annee]" class="btn btn-success">Ouvrir</button>
                                   <button *ngIf="annee.status; else closedbutton" class="btn btn-danger  btn sweet-confirm" (click)="cloturer(annee.id)">Cloturer</button>
                                   <ng-template #closedbutton><button  class="btn btn-grean btn-success  btn sweet-confirm" (click)="activer(annee.id)">Activer</button></ng-template>
 

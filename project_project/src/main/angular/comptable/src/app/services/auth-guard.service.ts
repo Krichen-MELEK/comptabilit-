@@ -11,9 +11,6 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot) {
     const expectedRole = route.data.roles;
-    let accessToken = () => {
-      return localStorage.getItem('access_token');
-    };
     const role = () => {
       return localStorage.getItem('role');
     };

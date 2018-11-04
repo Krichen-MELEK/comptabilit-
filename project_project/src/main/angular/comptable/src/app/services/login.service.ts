@@ -1,7 +1,8 @@
-import { isUndefined } from 'util';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 const tokenHeader = new HttpHeaders({
   'Authorization': 'Basic Y2xpZW50OnNlY3JldA==', // this is the encoding of (clientId:secret)
@@ -13,41 +14,84 @@ const tokenHeader = new HttpHeaders({
 })
 export class LoginService {
 
-  constructor(private http: HttpClient,private router: Router) { }
+  refreshTokenExpiration: number = 60;
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(credentials: Object) {
+    console.log('login Service')
     const body = 'username=' + credentials['email'] + '&password=' + credentials['password'] + '&grant_type=password';
     return this.http.post('/api/oauth/token', body, { headers: tokenHeader });
   }
   refreshToken() {
-    const refreshToken = localStorage.getItem('refresh_token');
+    const refreshToken = this.getCookie('refresh-token');
     const body = 'refresh_token=' + refreshToken + '&grant_type=refresh_token';
     return this.http.post('/api/oauth/token', body, { headers: tokenHeader });
   }
   isAuthenticated(): boolean {
-    const currentTime = new Date().getTime(); // getting the time in seconds since 1970
-    const expiresAt = JSON.parse(localStorage.getItem('expires_in'));
-    return expiresAt > currentTime;
+    return (this.getCookie('access-token') != null);
   }
+
   logout() {
-    return this.http.post('/api/logout', JSON.parse(localStorage.getItem('user'))['email'])
-      .subscribe(result => {
-        localStorage.clear();
-      });
-  }
-  storeTokenInfo = (accessToken: string, expiresIn: string, refreshToken?: string, user?: object) => {
-    const expiration = new Date().getTime() + parseInt(expiresIn, 10) * 1000;
-    localStorage.setItem('access_token', accessToken);
-    localStorage.setItem('expires_in', JSON.stringify(expiration));
-    if (!isUndefined(refreshToken)) {
-      localStorage.setItem('refresh_token', refreshToken);
+    if (this.getCookie('user')) {
+      let email = JSON.parse(this.getCookie('user'))['email'];
+      localStorage.clear();
+      this.deleteCookie(['access-token', 'refresh-token', 'user']);
+      return this.http.post('/api/logout', email)
+        .subscribe(result => {
+        }, err => { });
+    } else {
+      localStorage.clear();
+      this.deleteCookie(['access-token', 'refresh-token', 'user']);
+      return of();
     }
-    if (!isUndefined(user)) {
-      localStorage.setItem('role', user['role']['name']);
-      localStorage.setItem('user', JSON.stringify(user));
+
+  }
+
+  deleteCookie(names: string[]) {
+    names.forEach(name => {
+      document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    })
+  }
+
+  storeAccessToken(accessToken: string, expiresIn: string) {
+    let accessTokenExpiration = new Date(new Date().getTime() + parseInt(expiresIn) * 1000).toUTCString();
+    document.cookie = 'access-token=' + accessToken + ';expires=' + accessTokenExpiration;
+  }
+
+  storeRefreshToken(refreshToken: string) {
+    let refreshTokenExpiration = new Date(new Date().getTime() + this.refreshTokenExpiration * 1000).toUTCString();
+    document.cookie = 'refresh-token=' + refreshToken + ";expires=" + refreshTokenExpiration;
+  }
+
+  redirectUser = (role: string) => {
+    this.router.navigate(['/' + role.toLowerCase()]);
+  }
+
+  /*
+  * stores user info
+  * @param client: any
+  */
+  storeUser(user: any): void {
+    let userToStore = JSON.stringify(user);
+    let expiration = new Date(new Date().getTime() + this.refreshTokenExpiration * 1000).toUTCString();
+    localStorage.setItem('role', user['role']['name']);
+    document.cookie = 'user=' + userToStore + ';expires=' + expiration;
+  }
+
+  getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
     }
+    return "";
   }
-  redirectUser = (role:string)=>{
-    this.router.navigate(['/'+role.toLowerCase()]);
-  }
+
 }

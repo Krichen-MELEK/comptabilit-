@@ -15,6 +15,7 @@ export class ListClientComponent implements OnInit {
   
   ngOnInit() {
     this.clientService.getClientValidation(true).subscribe((result : any[] )=> {
+      console.log('client validation: ',result)
       this.clients = result;
     }, error => console.error(error));
   }

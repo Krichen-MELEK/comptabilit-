@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Client } from './../../models/client.model';
 
 import { Component, OnInit } from '@angular/core';
@@ -13,11 +14,11 @@ import { ClientService } from '../../services/client.service';
 export class ClientComponent implements OnInit {
 
 
-  constructor(private clientService : ClientService) {
+  constructor(private loginService: LoginService,private clientService : ClientService) {
     
     this.clientService.getClient().subscribe(data =>{
       let client = new Client(data['nom'],data['prenom'],data['email'],data['telephone'],data['nomSociete'],data['matricule'],data['telSociete'],data['numRegistreCommerce'],data['secteurActivite'],data['adresseSociete'],data['emailSociete'],data['validation']);
-      localStorage.setItem('client',  JSON.stringify(client));
+      this.loginService.storeUser(client)
     })
   }
 

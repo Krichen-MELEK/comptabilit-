@@ -1,3 +1,6 @@
+import { FolderDetailComponent } from './components/admin/list-document-client/folder-detail/folder-detail.component';
+import { MensuelFolderComponent } from './components/admin/list-document-client/mensuel-folder/mensuel-folder.component';
+import { BigFolderComponent } from './components/admin/list-document-client/big-folder/big-folder.component';
 import { EmailReadComponent } from './components/email/email-read/email-read.component';
 import { EmailInboxComponent } from './components/email/email-inbox/email-inbox.component';
 import { EmailComposeComponent } from './components/email/email-compose/email-compose.component';
@@ -62,12 +65,12 @@ const routes: Routes = [
     { path: 'document-convention', component: ListDocumentConventionComponent},
     { path: 'profil-client/:id', component: ProfilClientAdminComponent},
     { path: 'list-document-client/:id', component: ListDocumentClientComponent},
-    {path: 'sous-document/:annee', component: SousListDocumentComponent},
-    {path: 'dossierJuridique/:annee', component: DossierJuridiqueComponent},
-    {path: 'document-view/:id', component: ViewDocumentComponent},
-    {path: 'bilanAnnuel/:annee', component: BilanAnnuelComponent},
-    {path: 'bilanMensuel/:annee', component: BilanMoisComponent},
-    {path: 'bilanMensuelDetails/:annee/:mois', component: BilanMoisDetailsComponent}
+    { path: 'sous-document/:annee', component: SousListDocumentComponent},
+    { path: 'dossierJuridique/:annee', component: DossierJuridiqueComponent},
+    { path: 'document-view/:id', component: ViewDocumentComponent},
+    { path: 'anneeFolder/:id/:annee', component: BigFolderComponent},
+    { path: 'mensuelFolder/:id/:annee', component: MensuelFolderComponent },
+    { path: 'files/:folder/:id/:annee', component: FolderDetailComponent}
     ] 
   },
   { path: 'client', component: ClientComponent,children:[

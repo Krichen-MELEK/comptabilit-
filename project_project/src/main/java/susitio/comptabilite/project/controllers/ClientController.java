@@ -4,14 +4,31 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import susitio.comptabilite.project.entities.*;
+import susitio.comptabilite.project.entities.Client;
+import susitio.comptabilite.project.entities.Document;
+import susitio.comptabilite.project.entities.DossierAnnuel;
+import susitio.comptabilite.project.entities.Message;
+import susitio.comptabilite.project.entities.Notification;
 import susitio.comptabilite.project.enums.TypeFolder;
 import susitio.comptabilite.project.enums.TypeNotification;
 import susitio.comptabilite.project.exceptions.BusinessException;
-import susitio.comptabilite.project.services.*;
+import susitio.comptabilite.project.services.ClientService;
+import susitio.comptabilite.project.services.DocumentService;
+import susitio.comptabilite.project.services.DossierAnnuelService;
+import susitio.comptabilite.project.services.MessageService;
+import susitio.comptabilite.project.services.NotificationService;
+import susitio.comptabilite.project.services.PersonneService;
 
 @CrossOrigin
 @RestController
@@ -46,7 +63,7 @@ public class ClientController {
 	@PostMapping("/upload")
 	public void addDocument(@RequestParam("file") MultipartFile file,@RequestParam("type") TypeFolder type,@RequestParam("contenue") String contenue,@RequestParam("annee") String annee) {
 		try {
-			documentService.uploadDocuments(file,type,annee,contenue,clientService.getLoggedInClient(),clientService.getClientById(1));
+			documentService.uploadDocuments(file,type,annee,contenue,clientService.getLoggedInClient(),personneService.getPersonneById(1));
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import susitio.comptabilite.project.dao.DocumentRepository;
-import susitio.comptabilite.project.dao.NotificationRepository;
 import susitio.comptabilite.project.entities.Document;
 import susitio.comptabilite.project.entities.Notification;
 import susitio.comptabilite.project.entities.Personne;
@@ -36,7 +35,7 @@ public class DocumentServiceImpl implements DocumentService{
 
     @Override
     public List<Document> getDossier(String annee, Personne personne, TypeFolder type) {
-        return documentRepository.getDocumentByAnneeDeCreationAndPersonneEmmeteurDocumentAndType(annee, personne, type);
+        return documentRepository.getDocumentByAnneeDeCreationAndPersonneEmmeteurDocumentAndTypeOrAnneeDeCreationAndPersonneRecepteurDocumentAndType(annee, personne, type,annee, personne, type);
     }
 
     @Override
@@ -73,7 +72,8 @@ public class DocumentServiceImpl implements DocumentService{
         }
 
     }
-    public void uploadDocumentsNews( TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur,String nomNews) {
+    @Override
+	public void uploadDocumentsNews( TypeFolder type , String annee,String contenue,Personne personneEmmetteur, Personne personneRecepteur,String nomNews) {
         Document document = new Document("","",annee,contenue,type,personneEmmetteur,personneRecepteur,nomNews);
         documentRepository.save(document) ;
     }
@@ -100,7 +100,8 @@ public class DocumentServiceImpl implements DocumentService{
         }
 
     }
-    public List<Document> getDocumentNews(TypeFolder typeFolder){
+    @Override
+	public List<Document> getDocumentNews(TypeFolder typeFolder){
         return documentRepository.getDocumentByType(typeFolder) ;
     }
 }
